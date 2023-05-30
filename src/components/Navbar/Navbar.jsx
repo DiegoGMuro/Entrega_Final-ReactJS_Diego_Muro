@@ -1,5 +1,5 @@
 import React from "react";
-import "./navbar.css";
+import "./Navbar.css";
 import CartWidget from "../CartWidget/CartWidget";
 import avion from './assets/Avion3.png';
 import { NavLink, Link } from "react-router-dom";
