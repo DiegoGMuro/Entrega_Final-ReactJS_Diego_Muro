@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './carrusel.css';
+import './Carrusel.css';
 
 export default function Carousel() {
     const [currentSlide, setCurrentSlide] = useState(0);
