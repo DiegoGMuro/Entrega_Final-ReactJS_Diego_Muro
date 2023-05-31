@@ -1,6 +1,6 @@
 import React from "react";
 import './ItemDetail.css';
-import ItemCount from '../ItemCount/Itemcount'
+import ItemCount from '../ItemCount/ItemCount'
 
 
 export default function ItemDetail({ id, nombre, pais, moneda, idioma, precioPasaje, imagen, lugaresInteres, stock }) {
