@@ -20,7 +20,7 @@ const Ciudades = [
         "continenteId": 1,
         "precioPasaje": "$350.000",
         "lugaresInteres": ["Sagrada Familia,", " ", "Parque Güell,", " ", "La Rambla"],
-        "imagen": "/src/assets/barcelona2.jpg",
+        "imagen": "./assets/barcelona2.jpg",
         "moneda": "Euro",
         "idioma": ["Español,", " ", "Catalan"],
         "stock": 5
@@ -33,7 +33,7 @@ const Ciudades = [
         "continenteId": 1,
         "precioPasaje": "$450.000",
         "lugaresInteres": ["Puerta de Brandenburgo,", " ", "Muro de Berlín,"," ", "Museo de Pérgamo"],
-        "imagen": "/src/assets/berlin1.jpg",
+        "imagen": "./assets/berlin1.jpg",
         "moneda": "Euro",
         "idioma": ["Aleman"],
         "stock": 5
@@ -46,7 +46,7 @@ const Ciudades = [
         "continenteId": 1,
         "precioPasaje": "$550.000",
         "lugaresInteres": ["Big Ben,", " ","London Eye,"," ", "Tower Bridge"],
-        "imagen": "/src/assets/londres4.jpg",
+        "imagen": "./assets/londres4.jpg",
         "moneda": "Libra esterlina",
         "idioma": ["Ingles"],
         "stock": 5
@@ -59,7 +59,7 @@ const Ciudades = [
         "continenteId": 1,
         "precioPasaje": "$300.000",
         "lugaresInteres": ["Torre Eiffel,"," ", "Museo del Louvre,"," ", "Catedral de Notre Dame"],
-        "imagen": "/src/assets/paris2.jpg",
+        "imagen": "./assets/paris2.jpg",
         "moneda": "Euro",
         "idioma": ["Frances"],
         "stock": 5
@@ -72,7 +72,7 @@ const Ciudades = [
         "continenteId": 1,
         "precioPasaje": "$250.000",
         "lugaresInteres": ["Coliseo Romano,", " ","Fontana di Trevi,"," ", "Ciudad del Vaticano"],
-        "imagen": "/src/assets/roma1.jpg",
+        "imagen": "./assets/roma1.jpg",
         "moneda": "Euro",
         "idioma": ["Italiano"],
         "stock": 5
@@ -86,7 +86,7 @@ const Ciudades = [
         "continenteId": 2,
         "precioPasaje": "$600.000",
         "lugaresInteres": ["Gran Palacio,", " ", "Wat Phra Kaew,", " ", "Mercado flotante Damnoen Saduak"],
-        "imagen": "/src/assets/Bangkok.jpg",
+        "imagen": "./assets/Bangkok.jpg",
         "moneda": "Baht tailandés",
         "idioma": ["Thai"],
         "stock": 5
@@ -100,7 +100,7 @@ const Ciudades = [
         "continenteId": 2,
         "precioPasaje": "$800.000",
         "lugaresInteres": ["Victoria Peak,", " ", "Templo de Man Mo,", " ", "Avenue of Stars"],
-        "imagen": "/src/assets/Hongkong.jpg",
+        "imagen": "./assets/HongKong.jpg",
         "moneda": "Dólar de Hong Kong",
         "idioma": ["Cantones,", " ", "Ingles"],
         "stock": 5
@@ -113,7 +113,7 @@ const Ciudades = [
         "continenteId": 2,
         "precioPasaje": "$700.000",
         "lugaresInteres": ["Torre de Tokio,", " ", "Templo Sensoji,", " ", "Barrio de Shibuya"],
-        "imagen": "/src/assets/Tokio.jpg",
+        "imagen": "./assets/Tokio.jpg",
         "moneda": "Yen japonés",
         "idioma": ["Japones"],
         "stock": 5
@@ -126,7 +126,7 @@ const Ciudades = [
         "continenteId": 2,
         "precioPasaje": "$900.000",
         "lugaresInteres": ["Templo de Besakih,", " ", "Playa de Kuta,", " ", "Templo de Tanah Lot"],
-        "imagen": "/src/assets/bali.jpeg",
+        "imagen": "./assets/bali.jpeg",
         "moneda": "Rupia indonesia",
         "idioma": ["Balinese,", " ", "Indonesian"],
         "stock": 5
@@ -140,7 +140,7 @@ const Ciudades = [
         "continenteId": 3,
         "precioPasaje": "$400.000",
         "lugaresInteres": ["Miami Beach,", " ", "Art Deco Historic District,", " ", "Ocean Drive"],
-        "imagen": "/src/assets/Miami.jpg",
+        "imagen": "./assets/Miami.jpg",
         "moneda": "Dólar estadounidense",
         "idioma": ["Inglés,", " ", "Español"],
         "stock": 5
@@ -153,7 +153,7 @@ const Ciudades = [
         "continenteId": 3,
         "precioPasaje": "$300.000",
         "lugaresInteres": ["Zona Arqueológica de Chichén Itzá,", " ", "Isla Mujeres,", " ", "Playa Delfines"],
-        "imagen": "/src/assets/Cancun.jpg",
+        "imagen": "./assets/Cancun.jpg",
         "moneda": "Peso mexicano",
         "idioma": ["Español"],
         "stock": 5
@@ -166,7 +166,7 @@ const Ciudades = [
         "continenteId": 3,
         "precioPasaje": "$200.000",
         "lugaresInteres": ["Cristo Redentor,", " ", "Playa de Copacabana,", " ", "Pan de Azúcar"],
-        "imagen": "/src/assets/Rio de janeiro2.jpg",
+        "imagen": "./assets/Rio de janeiro2.jpg",
         "moneda": "Real brasileño",
         "idioma": ["Portugués"],
         "stock": 5
@@ -179,7 +179,7 @@ const Ciudades = [
         "continenteId": 3,
         "precioPasaje": "$600.000",
         "lugaresInteres": ["Estatua de la Libertad,"," ", "Times Square,"," ", "Central Park"],
-        "imagen": "/src/assets/NY.jpg",
+        "imagen": "./assets/NY.jpg",
         "moneda": "Dólar estadounidense",
         "idioma": ["Inglés"],
         "stock": 5
@@ -192,7 +192,7 @@ const Ciudades = [
         "continenteId": 3,
         "precioPasaje": "$700.000",
         "lugaresInteres": ["Strip de Las Vegas,", " ", "Fremont Street Experience,", " ", "Bellagio"],
-        "imagen": "/src/assets/vegas2.jpg",
+        "imagen": "./assets/vegas2.jpg",
         "moneda": "Dólar estadounidense",
         "idioma": ["Inglés"],
         "stock": 5
@@ -205,7 +205,7 @@ const Ciudades = [
         "continenteId": 3,
         "precioPasaje": "$150.000",
         "lugaresInteres": ["Casapueblo,", " ", "La Mano de Punta del Este,", " ", "Isla de Lobos"],
-        "imagen": "/src/assets/punta2.jpg",
+        "imagen": "./assets/punta2.jpg",
         "moneda": "Peso uruguayo",
         "idioma": ["Español"],
         "stock": 5
