@@ -7,7 +7,7 @@ const Ciudades = [
         "continenteId": 1,
         "precioPasaje": "$400.000",
         "lugaresInteres": ["Museo Van Gogh,", " ", "Rijksmuseum,", " ", "Barrio Rojo"],
-        "imagen": "/src/assets/Amsterdam.jpg",
+        "imagen": "./assets/Amsterdam.jpg",
         "moneda": "Euro",
         "idioma": ["Dutch"],
         "stock": 5
