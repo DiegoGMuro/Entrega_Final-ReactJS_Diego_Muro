@@ -10,7 +10,7 @@ export default function ItemDetailContainer() {
 
 
     useEffect(() => {
-        getCiudadById(parseInt(itemId))
+        getCiudadById(parseInt(itemId))      /*o poner NUMBER     */
             .then(response => {
                 setCiudades(response)
             })
