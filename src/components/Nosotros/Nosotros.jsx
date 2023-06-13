@@ -1,7 +1,21 @@
 import React from 'react';
 import "./Nosotros.css";
+import { useEffect } from 'react';
+
 
 export default function Nosotros() {
+
+    useEffect(() => {
+        const hacerClick = () => {
+            console.log("Click");
+        }
+        window.addEventListener("click", hacerClick)
+        return () => {
+            window.removeEventListener("Click", hacerClick)
+        }
+    }, [])
+
+
     return (
         <div className="nosotros"><strong style={{ fontWeight: "bold" }}>Nosotros</strong>
             <div className="video-container">

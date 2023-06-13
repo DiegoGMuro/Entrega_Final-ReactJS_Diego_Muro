@@ -4,7 +4,7 @@ import { getCiudadesByContinent } from "../../data/Ciudades";
 import ItemList from "../ItemList/ItemList";
 import { useParams } from 'react-router-dom';
 
-import { pedirDatos } from "../Helpers/PedirDatos";
+import { pedirDatos } from "../../Helpers/PedirDatos";
 
 
 
