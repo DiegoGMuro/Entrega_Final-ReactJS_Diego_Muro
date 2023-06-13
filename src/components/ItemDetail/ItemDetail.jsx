@@ -3,8 +3,11 @@ import './ItemDetail.css';
 import ItemCount from '../ItemCount/ItemCount'
 
 
-/* import { useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
+
+
+/*
 import { CartContext } from "../../context/CartContext";
 import { useContext } from "react";
  */
@@ -12,18 +15,21 @@ import { useContext } from "react";
 
 export default function ItemDetail({ id, nombre, pais, moneda, idioma, precioPasaje, imagen, lugaresInteres, stock }) {
 
-/*     const [quantityAdded, setQuantityAdded] = useState(0)
+    const [quantityAdded, setQuantityAdded] = useState(0)
 
-    const { addItem } = useContext(CartContext)
+    /*const { addItem } = useContext(CartContext)*/
+
 
     const handleOnAdd = (quantity) => {
         setQuantityAdded(quantity)
 
+        /*
         const item = {
             id, nombre, precioPasaje
         }
-        addItem(item, quantity)
-    }  */
+        addItem(item, quantity)*/
+
+    }
 
 
     return (
@@ -57,16 +63,17 @@ export default function ItemDetail({ id, nombre, pais, moneda, idioma, precioPas
                 <section className="ItemQty">
 
 
-{/*                     {
+                    {
                         quantityAdded > 0 ? (
                             <Link to="/cart" className="Option"> Terminar Compra </Link>
                         ) : (
                             <ItemCount initial={1} stock={stock} onAdd={handleOnAdd} />
                         )
-                    }  */}
+                    }
 
 
-                    <ItemCount initial={1} stock={stock} onAdd={(quantity) => console.log("cantidad agregada", quantity)} />
+                    {/*                     <ItemCount initial={1} stock={stock} onAdd={(quantity) => console.log("cantidad agregada", quantity)} /> */}
+
                 </section>
             </div>
         </div>
