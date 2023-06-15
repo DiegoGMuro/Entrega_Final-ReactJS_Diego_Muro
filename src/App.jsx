@@ -7,10 +7,12 @@ import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailCont
 import FooterPag from "./components/FooterPag/FooterPag";
 import Nosotros from "./components/Nosotros/Nosotros";
 
+import Cart from "./components/Cart/Cart";              //
 
-/* import Cart from "./components/Cart/Cart";
 import { CartProvider } from "./context/CartContext";
- */
+
+/* import Checkout from "./components/Checkout/Checkout"; */
+
 
 
 
@@ -19,21 +21,24 @@ function App() {
     <div className='App'>
       <BrowserRouter>
 
-{/*         <CartProvider > */}
+        <CartProvider >
 
           <NavBar />
           <Routes>
-            <Route path='/' element={<ItemListContainer />} />
+            <Route path='/' element={<ItemListContainer/>} />
             <Route path='/continente/:continenteId' element={<ItemListContainer />} />
             <Route path='/Item/:itemId' element={<ItemDetailContainer />} />
             <Route path='/nosotros' element={<Nosotros />} />
 
-{/*             <Route path='/cart' element={<Cart/>} />
- */}
-            <Route path='*' element={<h1>404 NOT FOUND</h1>} />
+            <Route path='/cart' element={<Cart />} />
+
+{/*              <Route path='/checkout' element={<Checkout/>} />    */}
+
+
+            <Route path='*' element={<h1 className="color-error">404 NOT FOUND</h1>} />
           </Routes>
 
-{/*         </CartProvider> */}
+        </CartProvider>
 
       </BrowserRouter>
       <hr />

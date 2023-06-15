@@ -22,6 +22,17 @@
     color: darkblue;
 }
 
+.NameCountry{
+    color: darkgreen;
+}
+
+.Currency{
+    color: darkblue;
+}
+
+.InterestPlaces{
+    color: darkgreen;
+}
 
 .CityImg {
     width: 60%;

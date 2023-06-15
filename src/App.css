@@ -59,3 +59,7 @@
 body {
   background-color: lightgoldenrodyellow; 
   }
+
+  .color-error{
+    color: red;
+  }

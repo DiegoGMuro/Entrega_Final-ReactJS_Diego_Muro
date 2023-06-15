@@ -1,8 +1,8 @@
 import { createContext, useState } from "react";
 
 
-export const CartContext = createContext({
-    cart: []
+export const CartContext = createContext({                     // creamos contexto q contendrá el estado del carrito de compras.
+    cart: []                                                   // Exportamos el CartContext para que pueda ser utilizado por otros componentes.    
 })
 
 export const CartProvider = ({ children }) => {
@@ -10,24 +10,24 @@ export const CartProvider = ({ children }) => {
 
     console.log(cart)
 
-    const addItem = (item, quantity) => {
+    const addItem = (item, quantity) => {                              // Agrega cantidad de items al carrito
         if (!isInCart(item.id)) {
-            setCart(prev => [...prev, { ...item, quantity }])
+            setCart(prev => [...prev, {...item, quantity }])
         } else {
             console.error("El producto ya fue agregado")
         }
     }
 
-    const removeItem = (itemId) => {
+    const removeItem = (itemId) => {                                 // Remueve un item del Cart usando su ID
         const cartUpdated = cart.filter(prod => prod.id !== itemId)
         setCart(cartUpdated)
     }
 
-    const clearCart = () => {
+    const clearCart = () => {                                         // Remueve todos los Items
         setCart([])
     }
 
-    const isInCart = (itemId) => {
+    const isInCart = (itemId) => {                                    // True /  False
         return cart.some(prod => prod.id === itemId)
     }
 

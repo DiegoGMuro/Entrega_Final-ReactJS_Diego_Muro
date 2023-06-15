@@ -27,3 +27,4 @@ export default function ItemDetailContainer() {
 }
 
 
+// MODIFICAR CON FIREBASE  - ver VIDEO CLASE 12
