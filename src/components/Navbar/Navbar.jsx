@@ -35,6 +35,11 @@ export default function NavBar() {
                 <li className="nav-item">
                     <NavLink to={`/continente/America`} className={({ isActive }) => isActive ? 'ActiveOption' : 'Option'}>America</NavLink>
                 </li>
+
+                <li className="nav-item">
+                    <NavLink to={`/CheckoutForm`} className={({ isActive }) => isActive ? 'ActiveOption' : 'Option'}>Contacto</NavLink>
+                </li>
+
                 <CartWidget />
             </ul>
         </nav>

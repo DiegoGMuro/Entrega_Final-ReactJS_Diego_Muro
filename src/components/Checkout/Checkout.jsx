@@ -5,6 +5,7 @@ import { CartContext } from '../../context/CartContext'
 import {db} from '../../services/firebaseConfig' 
 import CheckoutForm from '../CheckoutForm/CheckoutForm'
 
+
 const Checkout = () => {
     const [loading, setLoading] = useState(false)
     const [orderId, setOrderId] = useState('')

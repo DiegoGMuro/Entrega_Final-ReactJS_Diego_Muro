@@ -11,6 +11,8 @@ import Cart from "./components/Cart/Cart";              //
 
 import { CartProvider } from "./context/CartContext";
 
+import CheckoutForm from "./components/CheckoutForm/CheckoutForm";
+
 /* import Checkout from "./components/Checkout/Checkout"; */
 
 
@@ -26,11 +28,16 @@ function App() {
           <NavBar />
           <Routes>
             <Route path='/' element={<ItemListContainer/>} />
-            <Route path='/continente/:continenteId' element={<ItemListContainer />} />
             <Route path='/Item/:itemId' element={<ItemDetailContainer />} />
+
+            <Route path='/continente' element={<ItemListContainer />} />   
+
+            <Route path='/continente/:continenteId' element={<ItemListContainer />} />
             <Route path='/nosotros' element={<Nosotros />} />
 
             <Route path='/cart' element={<Cart />} />
+
+            <Route path='/CheckoutForm' element={<CheckoutForm />} />
 
 {/*              <Route path='/checkout' element={<Checkout/>} />    */}
 
