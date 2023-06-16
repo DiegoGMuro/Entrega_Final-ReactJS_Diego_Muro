@@ -32,7 +32,7 @@ const Checkout = () => {
 
             const productRef = collection (db, ' products')
 
-            const productsAddedFromFirestore = await getDocs(query(productRef, where(documentId(), 'in', ids)));     // FALTA CODIGO
+            const productsAddedFromFirestore = await getDocs(query(productRef, where(documentId(), 'in', ids)));     // FALTA CODIGO?
 
             const { docs } = productsAddedFromFirestore
 
