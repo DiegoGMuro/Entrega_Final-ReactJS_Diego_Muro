@@ -20,7 +20,7 @@ export default function Item({ id, nombre, pais, moneda, precioPasaje, imagen })
                 <br />
                 <section>
                     <p className="PrecioPasaje">
-                        Precio Pasaje: {precioPasaje}
+                        Precio Pasaje $: {parseFloat(precioPasaje).toLocaleString('es-AR', { minimumFractionDigits: 0 })}
                     </p>
                 </section>
                 <br />

@@ -34,15 +34,12 @@ export const CartProvider = ({ children }) => {
         return cart.some(prod => prod.id === itemId)
     }
 
-    const isCartEmpty = cart.length === 0; // Variable booleana para verificar si el carrito está vacío
+
 
     return (
         <CartContext.Provider value={{ cart, addItem, removeItem, clearCart /* , precioTotal */ }}>
             <div className="cart-container">
                 {children}
-                {isCartEmpty && (
-                    <p className="empty-cart-message">El carrito está vacío 😉</p>
-                )}
             </div>
         </CartContext.Provider>
     )

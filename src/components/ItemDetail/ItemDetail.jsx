@@ -47,7 +47,7 @@ export default function ItemDetail({ id, nombre, pais, moneda, idioma, precioPas
                         <strong style={{ fontWeight: "bold" }}>Moneda:</strong> {moneda}
                     </p>
                     <p className="CostPass">
-                        Precio Pasaje: {precioPasaje}
+                        Precio Pasaje $: {parseFloat(precioPasaje).toLocaleString('es-AR', { minimumFractionDigits: 0 })}
                     </p>
                 </section>
                 <section>
