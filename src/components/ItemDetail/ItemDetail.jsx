@@ -17,16 +17,13 @@ export default function ItemDetail({ id, nombre, pais, moneda, idioma, precioPas
 
     const { addItem } = useContext(CartContext)  //
 
-
     const handleOnAdd = (quantity) => {
         setQuantityAdded(quantity)
-
         
         const item = {                           //
             id, nombre, precioPasaje
         }
         addItem(item, quantity)
-
     }
 
 

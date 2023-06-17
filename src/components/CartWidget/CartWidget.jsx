@@ -25,7 +25,7 @@ export default function CartWidget() {
 
 
     return (
-        <Link to='/cart' className="cart-widget" style={{ display: totalQuantity > 0 ? "block" : " none" }}>
+        <Link to='/cart' className="cart-widget" /* style={{ display: totalQuantity > 0 ? "block" : " none" }} */>
             <img className="cart-widget" src={cart} alt="carrito" />
             {totalQuantity}
         </Link>

@@ -21,16 +21,18 @@ import CheckoutForm from "./components/CheckoutForm/CheckoutForm";
 function App() {
   return (
     <div className='App'>
-      <BrowserRouter>
 
-        <CartProvider >
+      <CartProvider >
+        <BrowserRouter>
+
+
 
           <NavBar />
           <Routes>
-            <Route path='/' element={<ItemListContainer/>} />
+            <Route path='/' element={<ItemListContainer />} />
             <Route path='/Item/:itemId' element={<ItemDetailContainer />} />
 
-            <Route path='/continente' element={<ItemListContainer />} />   
+            <Route path='/continente' element={<ItemListContainer />} />
 
             <Route path='/continente/:continenteId' element={<ItemListContainer />} />
             <Route path='/nosotros' element={<Nosotros />} />
@@ -39,15 +41,15 @@ function App() {
 
             <Route path='/CheckoutForm' element={<CheckoutForm />} />
 
-{/*              <Route path='/checkout' element={<Checkout/>} />    */}
+            {/*              <Route path='/checkout' element={<Checkout/>} />    */}
 
 
             <Route path='*' element={<h1 className="color-error">404 NOT FOUND</h1>} />
           </Routes>
 
-        </CartProvider>
 
-      </BrowserRouter>
+        </BrowserRouter>
+      </CartProvider>
       <hr />
       <hr />
       <Carrusel />
