@@ -1,7 +1,7 @@
 import React from 'react'
 import './Checkout.css'
 import { useContext, useState } from 'react'
-import { CartContext } from '../../context/CartContext'
+import { cartContext } from '../../context/CartContext'
 import {db} from '../../services/firebaseConfig' 
 import CheckoutForm from '../CheckoutForm/CheckoutForm'
 
@@ -10,7 +10,7 @@ const Checkout = () => {
     const [loading, setLoading] = useState(false)
     const [orderId, setOrderId] = useState('')
 
-    const { cart, total, clearCart } = useContext(CartContext)
+    const { cart, total, clearCart } = useContext(cartContext)
 
     const createOrder = async ({ name, phone, email }) => {
         setLoading(true)

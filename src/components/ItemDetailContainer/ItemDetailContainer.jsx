@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import './ItemDetailContainer.css'
 import { getCiudadById } from "../../data/Ciudades";
 import Ciudades from "../../data/Ciudades";
 import ItemDetail from "../ItemDetail/ItemDetail";
 import { useParams } from 'react-router-dom';
 import ItemCount from "../ItemCount/ItemCount";
+import { cartContext } from "../../context/CartContext";   //
 
 /* 
 import {getDoc, doc} from 'firebase/firestore' */
@@ -13,12 +14,23 @@ import {getDoc, doc} from 'firebase/firestore' */
 
 
 export default function ItemDetailContainer() {
-    const [Ciudades, setCiudades] = useState(null)
+    const [Ciudades, setCiudades] = useState({});
 
     /*  const [loading, setLoading] = useState(true) */
 
-    const { itemId } = useParams()
+    //  Usamos/consumimos el Context
+    const { cart, addItem, removeItem } = useContext(cartContext);
+    console.log("context:", cart);
 
+
+    function onAddToCart(quantity) {
+        /* agrego al array del context este producto */
+        addItem(Ciudades, quantity);
+        alert(`Agregaste ${quantity} pasajes a ${Ciudades && Ciudades.nombre} al carrito `);
+    }
+
+
+    const { itemId } = useParams()
 
     // A - Ver abajo
 
@@ -32,10 +44,6 @@ export default function ItemDetailContainer() {
             })
     }, [itemId])
 
-
-    function onAddToCart(quantity) {
-        alert(`Agregaste ${quantity} pasajes a ${Ciudades && Ciudades.nombre} al carrito `);
-    }
 
 
     return (
@@ -71,6 +79,9 @@ export default function ItemDetailContainer() {
 
                         {/* condicionales / rendering condicional */}
                         <ItemCount onAddToCart={onAddToCart} stock={5} />
+
+                         {/* BOTON TEMPORAL */}
+                        <button onClick={() => removeItem(Ciudades.id)}>Eliminar</button>
 
                     </div>
                 </>

@@ -1,7 +1,7 @@
 import React from 'react';
 import './Cart.css';
 import { useContext } from 'react';
-import { CartContext } from '../../context/CartContext';
+import { cartContext } from '../../context/CartContext';
 import CartItem from '../CartItem/CartItem';
 import { Link } from 'react-router-dom';
 
@@ -32,7 +32,7 @@ export default Cart       */           //
 
 
 const Cart = () => {
-    const { cart, clearCart, totalQuantity } = useContext(CartContext);
+    const { cart, clearCart, totalQuantity } = useContext(cartContext);
 
     const calculateTotal = () => {
         let total = 0;

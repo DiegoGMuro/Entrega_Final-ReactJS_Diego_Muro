@@ -2,6 +2,7 @@
   width: 20px;
   height: 20px;
   padding-right: 15px;
+  margin-right: 5px;
 }
 
 
@@ -22,4 +23,9 @@
 .cart-widget:hover {
   background-color: lightseagreen;
   cursor: pointer;
+}
+
+
+.cart-widget-count {
+  margin-left: 0.1px; 
 }

@@ -8,11 +8,11 @@
 
 
 import { useContext } from "react";
-import { CartContext } from "../../context/CartContext";
+import { cartContext } from "../../context/CartContext";
 
 
 function CartView() {
-    const { cart, removeItem } = useContext(CartContext);
+    const { cart, removeItem } = useContext(cartContext);
 
     return (
         <div>

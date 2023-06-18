@@ -2,17 +2,16 @@ import { createContext, useState, useEffect } from "react";
 import './CartContext.css';
 
 
+// creamos contexto q contendrá el estado del carrito de compras. Exportamos el CartContext para que pueda ser utilizado por otros componentes
 
-export const CartContext = createContext({             // creamos contexto q contendrá el estado del carrito de compras.
-    cart: []                                          // Exportamos el CartContext para que pueda ser utilizado por otros componentes.    
-})
+export const cartContext = createContext({ cart: [] });
 
 
 export const CartProvider = ({ children }) => {
     const [cart, setCart] = useState([])
     console.log(cart)
 
-    const addItem = (item, quantity) => {                              // Agrega cantidad de items al carrito
+    const addItem = (item, quantity) => {                              // Agrega cantidad de items al carrito, puedo usar PUSH tambien
         if (!isInCart(item.id)) {
             setCart(prev => [...prev, { ...item, quantity }])
         } else {
@@ -20,9 +19,30 @@ export const CartProvider = ({ children }) => {
         }
     }
 
-    const removeItem = (itemId) => {                                 // Remueve un item del Cart usando su ID
-        const cartUpdated = cart.filter(prod => prod.id !== itemId)
-        setCart(cartUpdated)
+    /*     function addItem(item, quantity) {
+            const newCart = [...cart]; // shallow copy/deep clone
+            newCart.push({ ...item, quantity });
+            setCart(newCart);
+          } */
+
+
+    function countItems() {
+        let total = 0;
+        cart.forEach((item) => {
+            total += item.quantity;
+        });
+        return total;
+    }
+
+
+
+    /*     const removeItem = (itemId) => {                                 
+            const cartUpdated = cart.filter(prod => prod.id !== itemId)
+            setCart(cartUpdated)
+        } */
+
+    function removeItem(idDelete) {                                       // Remueve un item del Cart usando su ID
+        setCart(cart.filter((item) => item.id !== idDelete));
     }
 
     const clearCart = () => {                                         // Remueve todos los Items
@@ -35,17 +55,16 @@ export const CartProvider = ({ children }) => {
     }
 
 
-
     return (
-        <CartContext.Provider value={{ cart, addItem, removeItem, clearCart /* , precioTotal */ }}>
+        <cartContext.Provider value={{ cart, setCart, addItem, countItems, removeItem, clearCart, isInCart  /* , precioTotal */ }}>
             <div className="cart-container">
                 {children}
             </div>
-        </CartContext.Provider>
-    )
+        </cartContext.Provider>
+    );
 }
 
-/*   
+/*
 const precioTotal = () =>{
     return cart.reduce((acc, prod) => scc + prod.precio * prod.cantidad, 0)
 }

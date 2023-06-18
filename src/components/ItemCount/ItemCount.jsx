@@ -1,16 +1,16 @@
 import React from "react";
 import "./ItemCount.css";
 import { useState } from "react";
-import LayOut from "../LayOut/LayOut"; 
+import LayOut from "../LayOut/LayOut";
+import { Link } from "react-router-dom";
 
 
-
-export default function ItemCount({ stock, initial, /* onAdd, */ onAddToCart /* props */}) {
+export default function ItemCount({ stock, initial, /* onAdd, */ onAddToCart /* props */ }) {
 
     const [quantity, setQuantity] = useState(/* initial */ 0);
 
     const increment = () => {
-        if (quantity < /*props.stock*/stock ) {
+        if (quantity < /*props.stock*/stock) {
             setQuantity(quantity + 1)
         }
     }
@@ -21,6 +21,12 @@ export default function ItemCount({ stock, initial, /* onAdd, */ onAddToCart /* 
         }
     }
 
+    const handleAddToCart = () => {
+        if (quantity > 0) {
+            onAddToCart(quantity);
+        }
+    };
+
     return (
         <div className="Counter">
             <div className="Controls">
@@ -30,14 +36,22 @@ export default function ItemCount({ stock, initial, /* onAdd, */ onAddToCart /* 
             </div>
 
             <div>
-{/*                 <button className="Button" onClick={() => onAdd(quantity)} disabled={!stock}>Agregar viaje</button> */}
-
-                <button className="Button" onClick={() => onAddToCart(quantity)} disabled={!stock}>
-                Agregar viaje</button>
+                {/*                 <button className="Button" onClick={() => onAdd(quantity)} disabled={!stock}>Agregar viaje</button> */}
 
 
+                {/*                 <button className="Button" onClick={() => onAddToCart(quantity)} disabled={!stock}>
+                Agregar viaje</button> */}
+
+
+                <button className="Button" onClick={handleAddToCart} disabled={!stock}>
+                    Agregar viaje
+                </button>
+                {quantity > 0 && (
+                    <Link to="/cart" className="Option">
+                        Ir al carrito
+                    </Link>
+                )}
             </div>
-
         </div>
     )
 

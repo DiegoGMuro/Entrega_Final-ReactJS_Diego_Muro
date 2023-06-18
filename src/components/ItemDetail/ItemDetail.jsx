@@ -1,13 +1,10 @@
 import React from "react";
 import './ItemDetail.css';
 import ItemCount from '../ItemCount/ItemCount'
-
 import { useState } from "react";
 import { Link } from "react-router-dom";
-
-import { CartContext } from "../../context/CartContext";   //
-
- import { useContext } from "react";                      //
+import { cartContext } from "../../context/CartContext";   //
+import { useContext } from "react";                      //
 
 
 
@@ -15,11 +12,11 @@ export default function ItemDetail({ id, nombre, pais, moneda, idioma, precioPas
 
     const [quantityAdded, setQuantityAdded] = useState(0)
 
-    const { addItem } = useContext(CartContext)  //
+    const { addItem } = useContext(cartContext)  //
 
     const handleOnAdd = (quantity) => {
         setQuantityAdded(quantity)
-        
+
         const item = {                           //
             id, nombre, precioPasaje
         }
@@ -30,7 +27,6 @@ export default function ItemDetail({ id, nombre, pais, moneda, idioma, precioPas
     return (
         <div className="CardCity">
             <div className="City">
-
 
                 <h2 className="NameCity">
                     Ciudad seleccionada: {nombre}
@@ -57,8 +53,6 @@ export default function ItemDetail({ id, nombre, pais, moneda, idioma, precioPas
                         <strong style={{ fontWeight: "bold" }}>Lugares de interés:</strong> {lugaresInteres}
                     </p>
                 </section>
-
-
                 <section className="ItemQty">
                     {
                         quantityAdded > 0 ? (
