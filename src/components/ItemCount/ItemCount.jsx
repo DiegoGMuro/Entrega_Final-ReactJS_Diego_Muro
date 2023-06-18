@@ -5,12 +5,12 @@ import LayOut from "../LayOut/LayOut";
 
 
 
-export default function ItemCount({ stock, initial, onAdd }) {
+export default function ItemCount({ stock, initial, /* onAdd, */ onAddToCart /* props */}) {
 
-    const [quantity, setQuantity] = useState(initial)
+    const [quantity, setQuantity] = useState(/* initial */ 0);
 
     const increment = () => {
-        if (quantity < stock) {
+        if (quantity < /*props.stock*/stock ) {
             setQuantity(quantity + 1)
         }
     }
@@ -28,9 +28,18 @@ export default function ItemCount({ stock, initial, onAdd }) {
                 <h4 className="Number">{quantity}</h4>
                 <button className="Button" onClick={increment}>+</button>
             </div>
+
             <div>
-                <button className="Button" onClick={() => onAdd(quantity)} disabled={!stock}>Agregar viaje</button>
+{/*                 <button className="Button" onClick={() => onAdd(quantity)} disabled={!stock}>Agregar viaje</button> */}
+
+                <button className="Button" onClick={() => onAddToCart(quantity)} disabled={!stock}>
+                Agregar viaje</button>
+
+
             </div>
+
         </div>
     )
+
+
 }

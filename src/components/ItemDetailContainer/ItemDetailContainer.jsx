@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
+import './ItemDetailContainer.css'
 import { getCiudadById } from "../../data/Ciudades";
+import Ciudades from "../../data/Ciudades";
 import ItemDetail from "../ItemDetail/ItemDetail";
 import { useParams } from 'react-router-dom';
+import ItemCount from "../ItemCount/ItemCount";
 
 /* 
 import {getDoc, doc} from 'firebase/firestore' */
@@ -12,12 +15,12 @@ import {getDoc, doc} from 'firebase/firestore' */
 export default function ItemDetailContainer() {
     const [Ciudades, setCiudades] = useState(null)
 
-    const [loading, setLoading] = useState(true)
+    /*  const [loading, setLoading] = useState(true) */
 
     const { itemId } = useParams()
 
 
-// A - Ver abajo
+    // A - Ver abajo
 
     useEffect(() => {
         getCiudadById(parseInt(itemId))      /*o poner NUMBER     */
@@ -30,13 +33,65 @@ export default function ItemDetailContainer() {
     }, [itemId])
 
 
+    function onAddToCart(quantity) {
+        alert(`Agregaste ${quantity} pasajes a ${Ciudades && Ciudades.nombre} al carrito `);
+    }
+
 
     return (
+        /* Separar en componente de presentación: <ItemDetail .../> */
+
         <div className="ItemDetailContainer">
-            <ItemDetail {...Ciudades} />
+
+            {Ciudades ? (
+                <>
+                    <div className="ItemDetailContainer">
+                        <h2 className="NameCity">Ciudad Seleccionada : {Ciudades.nombre}</h2>
+                        <h4 className="NameCountry">
+                            Pais: {Ciudades.pais}
+                            <br />
+                            Idioma: {Ciudades.idioma}
+                        </h4>
+                    </div>
+                    <div className="CityImgWrapper">
+                        <img src={Ciudades.imagen} alt={Ciudades.nombre} className="CityImg" />
+                    </div>
+                    <div>
+                        <p className="Currency">
+                            <strong style={{ fontWeight: "bold" }}>Moneda:</strong> {Ciudades.moneda}
+                        </p>
+                        <p className="CostPass">
+                            Precio Pasaje AR$: {parseFloat(Ciudades.precioPasaje).toLocaleString('es-AR', { minimumFractionDigits: 0 })}
+                        </p>
+                        <div>
+                            <p className="InterestPlaces">
+                                <strong style={{ fontWeight: "bold" }}>Lugares de interés:</strong> {Ciudades.lugaresInteres}
+                            </p>
+                        </div>
+
+                        {/* condicionales / rendering condicional */}
+                        <ItemCount onAddToCart={onAddToCart} stock={5} />
+
+                    </div>
+                </>
+            ) : (
+                <p>Cargando...</p>
+            )}
         </div>
-    )
+
+
+        /*         <div className="ItemDetailContainer">
+                    <ItemDetail {...Ciudades} />
+                </div> */
+
+
+    );
 }
+
+
+
+
+
 
 
 // MODIFICAR CON FIREBASE  - ver VIDEO CLASE 12

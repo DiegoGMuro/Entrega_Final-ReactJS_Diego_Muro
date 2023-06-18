@@ -30,6 +30,8 @@ export default function ItemDetail({ id, nombre, pais, moneda, idioma, precioPas
     return (
         <div className="CardCity">
             <div className="City">
+
+
                 <h2 className="NameCity">
                     Ciudad seleccionada: {nombre}
                 </h2>
@@ -55,9 +57,9 @@ export default function ItemDetail({ id, nombre, pais, moneda, idioma, precioPas
                         <strong style={{ fontWeight: "bold" }}>Lugares de interés:</strong> {lugaresInteres}
                     </p>
                 </section>
+
+
                 <section className="ItemQty">
-
-
                     {
                         quantityAdded > 0 ? (
                             <Link to="/cart" className="Option"> Destino Seleccionado</Link>
