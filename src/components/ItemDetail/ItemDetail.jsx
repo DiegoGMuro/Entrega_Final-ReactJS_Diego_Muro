@@ -1,9 +1,12 @@
 import React from "react";
 import './ItemDetail.css';
 import ItemCount from '../ItemCount/ItemCount'
+
 import { useState } from "react";
 import { Link } from "react-router-dom";
+
 import { cartContext } from "../../context/CartContext";   //
+
 import { useContext } from "react";                      //
 
 
@@ -27,6 +30,7 @@ export default function ItemDetail({ id, nombre, pais, moneda, idioma, precioPas
     return (
         <div className="CardCity">
             <div className="City">
+
 
                 <h2 className="NameCity">
                     Ciudad seleccionada: {nombre}
@@ -53,6 +57,8 @@ export default function ItemDetail({ id, nombre, pais, moneda, idioma, precioPas
                         <strong style={{ fontWeight: "bold" }}>Lugares de interés:</strong> {lugaresInteres}
                     </p>
                 </section>
+
+
                 <section className="ItemQty">
                     {
                         quantityAdded > 0 ? (

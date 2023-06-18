@@ -9,6 +9,9 @@ export default function ItemCount({ stock, initial, /* onAdd, */ onAddToCart /* 
 
     const [quantity, setQuantity] = useState(/* initial */ 0);
 
+    const [addToCartClicked, setAddToCartClicked] = useState(false);  // 
+
+
     const increment = () => {
         if (quantity < /*props.stock*/stock) {
             setQuantity(quantity + 1)
@@ -23,6 +26,9 @@ export default function ItemCount({ stock, initial, /* onAdd, */ onAddToCart /* 
 
     const handleAddToCart = () => {
         if (quantity > 0) {
+
+            setAddToCartClicked(true);   //
+
             onAddToCart(quantity);
         }
     };
@@ -43,13 +49,33 @@ export default function ItemCount({ stock, initial, /* onAdd, */ onAddToCart /* 
                 Agregar viaje</button> */}
 
 
-                <button className="Button" onClick={handleAddToCart} disabled={!stock}>
+
+
+                {/*  <button className="Button" onClick={handleAddToCart} disabled={!stock}>
                     Agregar viaje
                 </button>
                 {quantity > 0 && (
                     <Link to="/cart" className="Option">
                         Ir al carrito
                     </Link>
+                )} */}
+
+
+
+
+
+                {!addToCartClicked && (
+                    <button className="Button" onClick={handleAddToCart} disabled={!stock}>
+                        Agregar viaje
+                    </button>
+                )}
+
+                {addToCartClicked && (
+                    <>
+                        <Link to="/cart" className="Option">
+                            Ir al carrito
+                        </Link>
+                    </>
                 )}
             </div>
         </div>
