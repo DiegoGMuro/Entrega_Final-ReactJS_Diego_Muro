@@ -6,6 +6,7 @@ import ItemDetail from "../ItemDetail/ItemDetail";
 import { useParams } from 'react-router-dom';
 import ItemCount from "../ItemCount/ItemCount";
 import { cartContext } from "../../context/CartContext";   //
+/* import Loader from "../Loader/Loader";      */
 
 /* 
 import {getDoc, doc} from 'firebase/firestore' */
@@ -79,9 +80,9 @@ export default function ItemDetailContainer() {
 
                         {/* condicionales / rendering condicional */}
                         <ItemCount onAddToCart={onAddToCart} stock={5} />
-
-                         {/* BOTON TEMPORAL */}
-                        <button onClick={() => removeItem(Ciudades.id)}>Eliminar</button>
+                        <br />
+                        {/* BOTON TEMPORAL */}
+                        <button className="Button" onClick={() => removeItem(Ciudades.id)}>Eliminar</button>
 
                     </div>
                 </>

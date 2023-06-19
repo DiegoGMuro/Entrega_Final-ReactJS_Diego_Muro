@@ -18,11 +18,11 @@ export default function NavBar() {
                         </li>
                     </Link>
                 </h2>
-                <li className="nav-item">
+{/*                 <li className="nav-item">
                     <a className="nav-link" href="/">
                         Home
                     </a>
-                </li>
+                </li> */}
                 <li className="nav-item">
                     <NavLink to={`/nosotros`} className={({ isActive }) => isActive ? 'ActiveOption' : 'Option'}>Nosotros</NavLink>
                 </li>

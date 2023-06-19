@@ -26,20 +26,24 @@ export default function ItemCount({ stock, initial, /* onAdd, */ onAddToCart /* 
 
     const handleAddToCart = () => {
         if (quantity > 0) {
-
             setAddToCartClicked(true);   //
-
             onAddToCart(quantity);
         }
     };
 
     return (
         <div className="Counter">
-            <div className="Controls">
-                <button className="Button" onClick={decrement} disabled={quantity <= 1}>-</button>
-                <h4 className="Number">{quantity}</h4>
-                <button className="Button" onClick={increment}>+</button>
-            </div>
+
+            {!addToCartClicked && (
+
+
+                <div className="Controls">
+                    <button className="Button" onClick={decrement} disabled={quantity <= 1}>-</button>
+                    <h4 className="Number">{quantity}</h4>
+                    <button className="Button" onClick={increment}>+</button>
+                </div>
+
+            )}
 
             <div>
                 {/*                 <button className="Button" onClick={() => onAdd(quantity)} disabled={!stock}>Agregar viaje</button> */}
@@ -80,6 +84,4 @@ export default function ItemCount({ stock, initial, /* onAdd, */ onAddToCart /* 
             </div>
         </div>
     )
-
-
 }
