@@ -1,5 +1,7 @@
 import { createContext, useState, useEffect } from "react";
 import './CartContext.css';
+import Swal from 'sweetalert2';
+import 'sweetalert2/dist/sweetalert2.css';
 
 
 // creamos contexto q contendrá el estado del carrito de compras. Exportamos el CartContext para que pueda ser utilizado por otros componentes
@@ -50,13 +52,27 @@ export const CartProvider = ({ children }) => {
 
     }
 
+    const handleCheckout = () => {
+        Swal.fire({
+            icon: 'info',
+            title: 'Finalizacion de la compra',
+            text: 'Ud está siendo redirigido al cierre de la compra',
+            showConfirmButton: false,
+            timer: 3000, 
+        });
+    };
+
+
+
+
+
     const isInCart = (itemId) => {                                    // True /  False
         return cart.some(prod => prod.id === itemId)
     }
 
 
     return (
-        <cartContext.Provider value={{ cart, setCart, addItem, countItems, removeItem, clearCart, isInCart  /* , precioTotal */ }}>
+        <cartContext.Provider value={{ cart, setCart, addItem, countItems, removeItem, clearCart, handleCheckout, isInCart  /* , precioTotal */ }}>
             <div className="cart-container">
                 {children}
             </div>

@@ -6,7 +6,15 @@ import ItemDetail from "../ItemDetail/ItemDetail";
 import { useParams } from 'react-router-dom';
 import ItemCount from "../ItemCount/ItemCount";
 import { cartContext } from "../../context/CartContext";   //
-/* import Loader from "../Loader/Loader";      */
+import Loader from "../Loader/Loader";
+/* import { NewtonsCradle } from '@uiball/loaders'; */
+
+import Swal from 'sweetalert2';
+import 'sweetalert2/dist/sweetalert2.css';
+
+
+
+
 
 /* 
 import {getDoc, doc} from 'firebase/firestore' */
@@ -17,17 +25,39 @@ import {getDoc, doc} from 'firebase/firestore' */
 export default function ItemDetailContainer() {
     const [Ciudades, setCiudades] = useState({});
 
-    /*  const [loading, setLoading] = useState(true) */
+    const [loading, setLoading] = useState(true)
 
     //  Usamos/consumimos el Context
     const { cart, addItem, removeItem } = useContext(cartContext);
     console.log("context:", cart);
 
+    /* agrego al array del context este producto */
+    /*     function onAddToCart(quantity) {
+            addItem(Ciudades, quantity);
+            alert(`Agregaste ${quantity} pasajes a ${Ciudades && Ciudades.nombre} al carrito `);
+        } */
+
 
     function onAddToCart(quantity) {
         /* agrego al array del context este producto */
         addItem(Ciudades, quantity);
-        alert(`Agregaste ${quantity} pasajes a ${Ciudades && Ciudades.nombre} al carrito `);
+
+
+        Swal.fire({
+            title: 'Operación realizada',
+            html: `Agregaste <strong>${quantity}</strong> pasajes a <strong>${Ciudades && Ciudades.nombre}</strong> al carrito`,
+            icon: 'success',
+            customClass: {
+                popup: 'swal-popup',
+                title: 'swal-title',
+                confirmButton: 'swal-confirm-button',
+                icon: 'swal-icon',
+            },
+        });
+
+
+
+
     }
 
 
@@ -36,6 +66,9 @@ export default function ItemDetailContainer() {
     // A - Ver abajo
 
     useEffect(() => {
+
+        setLoading(true);
+
         getCiudadById(parseInt(itemId))      /*o poner NUMBER     */
             .then(response => {
                 setCiudades(response)
@@ -43,6 +76,12 @@ export default function ItemDetailContainer() {
             .catch(error => {
                 console.error(error)
             })
+
+            .finally(() => {
+                setLoading(false); // Ocultar el indicador de carga después de recibir la respuesta
+            });
+
+
     }, [itemId])
 
 
@@ -52,7 +91,12 @@ export default function ItemDetailContainer() {
 
         <div className="ItemDetailContainer">
 
-            {Ciudades ? (
+
+            {loading ? (
+                <Loader /> // Mostrar el indicador de carga mientras se está cargando la información
+            ) : (
+
+                /* { Ciudades ? (*/
                 <>
                     <div className="ItemDetailContainer">
                         <h2 className="NameCity">Ciudad Seleccionada : {Ciudades.nombre}</h2>
@@ -86,9 +130,9 @@ export default function ItemDetailContainer() {
 
                     </div>
                 </>
-            ) : (
-                <p>Cargando...</p>
-            )}
+                /* ) : (
+                    <p>Cargando...</p> */
+            )/*)*/}
         </div>
 
 

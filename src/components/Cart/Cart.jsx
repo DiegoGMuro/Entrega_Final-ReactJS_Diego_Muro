@@ -5,6 +5,10 @@ import { cartContext } from '../../context/CartContext';
 import CartItem from '../CartItem/CartItem';
 import { Link } from 'react-router-dom';
 
+/* import Swal from 'sweetalert'; */
+import Swal from 'sweetalert2';
+import 'sweetalert2/dist/sweetalert2.css';
+
 
 
 /* const Cart = () => {
@@ -32,7 +36,7 @@ export default Cart       */           //
 
 
 const Cart = () => {
-    const { cart, clearCart, quantity, removeItem } = useContext(cartContext);
+    const { cart, clearCart, handleCheckout, quantity, removeItem } = useContext(cartContext);
 
     const calculateTotal = () => {
         let total = 0;
@@ -85,7 +89,7 @@ const Cart = () => {
                 ) : (
                     <div>
                         <h1>El carrito está vacío</h1>
-                        <Link to='/' className="Option">Volver a pantalla principal</Link>
+                        <Link to='/' className="Option">Seguir comprando</Link>
                     </div>
                 )}
 
@@ -95,7 +99,16 @@ const Cart = () => {
                         <button onClick={() => clearCart()} className="Button">Limpiar Carrito</button>
                         <br />
                         <br />
-                        <Link to="/checkoutform" className="Button">Checkout</Link>
+                        <Link to='/' className="Option">Seguir comprando</Link>
+                        <br />
+                        <br />
+                       {/*   <Link to="/checkoutform" className="Button">Checkout</Link>  */}
+
+                         <Link to="/checkoutform" className="Button" onClick={handleCheckout}>Checkout</Link>
+
+
+
+
                     </>
                 )}
             </div>

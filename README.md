@@ -16,7 +16,17 @@ Instalacion de dependencias:
 
 * npm install react-router-dom
 
+* npm install react - hook - form
+
+* npm install sweetalert2@11.0.18
+
+
 * npm install firebase
+
+
+
+
+
 
 
 

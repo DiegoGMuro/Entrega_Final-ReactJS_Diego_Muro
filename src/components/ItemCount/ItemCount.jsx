@@ -79,6 +79,9 @@ export default function ItemCount({ stock, initial, /* onAdd, */ onAddToCart /* 
                         <Link to="/cart" className="Option">
                             Ir al carrito
                         </Link>
+                        <br /> 
+                        <br />
+                        <Link to='/' className="Option">Seguir comprando</Link>
                     </>
                 )}
             </div>

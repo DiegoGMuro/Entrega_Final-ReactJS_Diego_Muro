@@ -7,9 +7,9 @@
 */
 
 
-import { useContext } from "react";
-import { cartContext } from "../../context/CartContext";
 
+/* import { useContext } from "react";
+import { cartContext } from "../../context/CartContext";
 
 function CartView() {
     const { cart, removeItem } = useContext(cartContext);
@@ -31,8 +31,8 @@ function CartView() {
         </div>
     );
 }
-
 export default CartView;
+ */
 
 
 // REVISAR PARA BORRAR
