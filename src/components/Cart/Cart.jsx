@@ -32,7 +32,7 @@ export default Cart       */           //
 
 
 const Cart = () => {
-    const { cart, clearCart, totalQuantity } = useContext(cartContext);
+    const { cart, clearCart, quantity, removeItem } = useContext(cartContext);
 
     const calculateTotal = () => {
         let total = 0;
@@ -45,57 +45,65 @@ const Cart = () => {
         });
         return total;
     };
-
     const total = calculateTotal();
 
-    if (totalQuantity === 0) {
-        return (
-            <div>
-                <h1>El carrito está vacío</h1>
-                <Link to='/' className="Option">Productos</Link>
-            </div>
-        );
-    }
+    /*     if (quantity === 0) {
+            return (
+                <div>
+                    <h1>El carrito está vacío</h1>
+                    <Link to='/' className="Option">Productos</Link>
+                </div>
+            );
+        } */
+
+    const handleRemoveItem = (itemId) => {
+        removeItem(itemId);
+    };
 
     return (
-        <div>
-            {/* {cart.map(p => <CartItem key={p.id} {...p} />)}  */}
+        <>
+            <h2 style={{ color: 'darkgreen', fontSize: '1.5em' }}>Resumen - Carrito:</h2>
+            <div>
+                {/* {cart.map(p => <CartItem key={p.id} {...p} />)} */}
 
-            {cart.map(item => (
+                {cart.length > 0 ? (
+                    cart.map(item => (
+                        <div key={item.id} className="CartItemContainer">
+                            <CartItem
+                                key={item.id}
+                                nombre={item.nombre}
+                                imagen={item.imagen}
+                                pais={item.pais}
+                                moneda={item.moneda}
+                                idioma={item.idioma}
+                                precioPasaje={item.precioPasaje}
+                                quantity={item.quantity}
+                            />
+                            <button onClick={() => handleRemoveItem(item.id)} className="EliminarButton">Eliminar</button>
+                        </div>
+                    ))
+                ) : (
+                    <div>
+                        <h1>El carrito está vacío</h1>
+                        <Link to='/' className="Option">Volver a pantalla principal</Link>
+                    </div>
+                )}
 
-/*
- <ul key={item.id}>
-<li>
-    Destino: {item.nombre}
-    <br />
-    Cantidad: {item.quantity}
-    <br />
-    Precio: {item.precioPasaje}
-    <br />
-    Pais: {item.pais}
-    <br />
-    Moneda: {item.moneda}
-    <br />Total: ${item.quantity * item.precioPasaje}
-</li>
-</ul>*/ 
-
-
-                <CartItem
-                    key={item.id}
-                    nombre={item.nombre}
-                    pais={item.pais}
-                    moneda={item.moneda}
-                    precioPasaje={item.precioPasaje}
-                    quantity={item.quantity}
-                />
-            ))}
-
-            <h3 style={{ color: 'darkred' }}>Total General: {total.toLocaleString('es-AR', {style: 'currency', currency: 'ARS', maximumFractionDigits: 0 })}</h3>
-
-            <button onClick={() => clearCart()} className="Button">Limpiar Carrito</button>
-            <Link to='/checkout' className="Option">Checkout</Link>
-        </div>
+                {cart.length > 0 && (
+                    <>
+                        <h3 style={{ color: 'darkred' }}>Total General: {total.toLocaleString('es-AR', { style: 'currency', currency: 'ARS', maximumFractionDigits: 0 })}</h3>
+                        <button onClick={() => clearCart()} className="Button">Limpiar Carrito</button>
+                        <br />
+                        <br />
+                        <Link to="/checkoutform" className="Button">Checkout</Link>
+                    </>
+                )}
+            </div>
+        </>
     );
+
+
 }
+
 
 export default Cart;

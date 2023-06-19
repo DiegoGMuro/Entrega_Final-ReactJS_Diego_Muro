@@ -2,10 +2,11 @@
 import React from 'react';
 import './CartItem.css';
 import Ciudades from '../../data/Ciudades';
+import Carousel from '../Carrusel/Carrusel';
 
 
 
-const CartItem = ({ id, nombre, pais, moneda, precioPasaje, quantity }) => {
+const CartItem = ({ id, nombre, pais, imagen, precioPasaje, quantity, moneda, idioma }) => {
 
   /*   console.log(pais) */
 
@@ -20,15 +21,27 @@ const CartItem = ({ id, nombre, pais, moneda, precioPasaje, quantity }) => {
   }).format(precio);
 
 
-  return (
-    <div className="CartItem">
-      <h4 style={{ color: 'darkblue', fontSize: '1.2em' }}>Destino: {nombre}</h4>
-      {/*             <p>Pais: {pais}</p> */}
-    <p><span style={{ color: 'darkgreen', fontWeight: 'bold' }}>Precio:</span> {formattedPrecioPasaje}</p>
-    <p><span style={{ color: 'darkgreen', fontWeight: 'bold' }}>Cantidad:</span> {quantity}</p>
-    <p><span style={{ color: 'darkgreen', fontWeight: 'bold' }}>Subtotal:</span> {subtotal.toLocaleString('es-AR', { style: 'currency', currency: 'ARS', maximumFractionDigits: 0 })}</p>
 
+  return (
+
+
+
+    <div className="CartItem">
+      <h4>Destino: {nombre}</h4>
+      <img src={imagen} className="Miniatura" alt="Miniatura" />
+      <p><span style={{ color: 'darkgreen', fontWeight: 'bold' }}>País:</span> {pais}</p>
+      <br />
+      <p><span style={{ color: 'darkgreen', fontWeight: 'bold' }}>Moneda:</span> {moneda}</p>
+      <br />
+      <p><span style={{ color: 'darkgreen', fontWeight: 'bold' }}>Idioma:</span> {idioma}</p>
+      <br />
+      <p><span style={{ color: 'darkgreen', fontWeight: 'bold' }}>Precio:</span> {formattedPrecioPasaje}</p>
+      <br />
+      <p><span style={{ color: 'darkgreen', fontWeight: 'bold' }}>Cantidad:</span> {quantity}</p>
+      <p><span style={{ color: 'darkgreen', fontWeight: 'bold' }}>Subtotal:</span> {subtotal.toLocaleString('es-AR', { style: 'currency', currency: 'ARS', maximumFractionDigits: 0 })}</p>
     </div>
+
+
   );
 }
 

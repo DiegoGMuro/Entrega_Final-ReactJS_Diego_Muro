@@ -71,6 +71,8 @@ export default CheckoutForm */
 import React from 'react'
 import './CheckoutForm.css'
 import { useForm } from "react-hook-form";
+import Cart from '../Cart/Cart';
+
 
 const Contacto = () => {
 
