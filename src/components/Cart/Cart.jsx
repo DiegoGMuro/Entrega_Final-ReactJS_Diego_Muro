@@ -104,7 +104,7 @@ const Cart = () => {
                         <br />
                        {/*   <Link to="/checkoutform" className="Button">Checkout</Link>  */}
 
-                         <Link to="/checkoutform" className="Button" onClick={handleCheckout}>Checkout</Link>
+                         <Link to="/checkoutform" className="Button" onClick={handleCheckout}>Terminar compra</Link>
 
 
 

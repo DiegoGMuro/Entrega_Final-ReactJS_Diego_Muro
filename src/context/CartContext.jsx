@@ -13,14 +13,48 @@ export const CartProvider = ({ children }) => {
     const [cart, setCart] = useState([])
     console.log(cart)
 
-    const addItem = (item, quantity) => {                              // Agrega cantidad de items al carrito, puedo usar PUSH tambien
+
+// Agrega cantidad de items al carrito, puedo usar PUSH tambien
+
+/*     const addItem = (item, quantity) => {                              
         if (!isInCart(item.id)) {
             setCart(prev => [...prev, { ...item, quantity }])
         } else {
             console.error("El producto ya fue agregado")
         }
+    } */
+
+
+
+
+
+    function addItem(item, quantity) {
+        const newCart = [...cart]; // shallow copy
+
+        if (isInCart(item.id)) {
+            setCart(
+                cart.map((cartItem) => {
+                    if (cartItem.id === item.id) {
+                        return { ...cartItem, quantity: cartItem.quantity + quantity };
+                    } else {
+                        return { ...cartItem };
+                    }
+                })
+            );
+        } else {
+            newCart.push({ ...item, quantity });
+            setCart(newCart);
+        }
     }
 
+
+
+
+
+
+
+
+    // Codigo del profe
     /*     function addItem(item, quantity) {
             const newCart = [...cart]; // shallow copy/deep clone
             newCart.push({ ...item, quantity });

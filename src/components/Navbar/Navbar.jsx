@@ -2,10 +2,23 @@ import React from "react";
 import "./Navbar.css";
 import CartWidget from "../CartWidget/CartWidget";
 import avion from './assets/Avion3.png';
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, /* useLocation  */} from "react-router-dom";
+/* import { useEffect } from "react"; */
 
 
 export default function NavBar() {
+
+
+    /*
+    // re-scroll to top cada vez que cambia la URL ("location")
+    let location = useLocation();
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [location]); */
+
+
+
     return (
         <nav>
             <ul className="nav-menu">
@@ -18,7 +31,7 @@ export default function NavBar() {
                         </li>
                     </Link>
                 </h2>
-{/*                 <li className="nav-item">
+                {/*                 <li className="nav-item">
                     <a className="nav-link" href="/">
                         Home
                     </a>
