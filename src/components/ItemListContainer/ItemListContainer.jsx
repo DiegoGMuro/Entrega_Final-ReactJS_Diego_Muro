@@ -6,7 +6,7 @@ import { getCiudadesByContinent } from "../../data/Ciudades";
 import ItemList from "../ItemList/ItemList";
 import { useParams } from 'react-router-dom';
 
-import { pedirDatos } from "../../Helpers/PedirDatos";
+/* import { pedirDatos } from "../../Helpers/PedirDatos"; */
 
 /* import{getDocs, collection, query, where} from 'firebase/firestore' */
 /* import {db} from '../../services/firebaseConfig' */
@@ -15,16 +15,14 @@ import { pedirDatos } from "../../Helpers/PedirDatos";
 
 export default function ItemListContainer() {
     const [Ciudades, setCiudades] = useState([]);
-
-    const [loading, setLoading] = useState(true)
-
+    const [isLoading, setIsLoading] = useState(true)
     const { continenteId } = useParams()
 
     useEffect(() => {                  //Para que la accion se ejecute cuando lo queremos usamos UseEffect, entonces el "useEffect" hace que el componente se ejecute cuando se monta y cuando el "continenteId" cambie
 
-        setLoading(true)
+        setIsLoading(true)
 
-//  A - Ver abajo
+        //  A - Ver abajo
 
         const asyncFunc = continenteId ? getCiudadesByContinent : getCiudades
 
@@ -36,8 +34,13 @@ export default function ItemListContainer() {
                 console.error(error)
             })
 
+            .finally(() => {                      //
+                setIsLoading(false);
+            });
 
-            
+
+
+
     }, [continenteId])
 
 
@@ -45,10 +48,13 @@ export default function ItemListContainer() {
     return (
         <div>
             <div>
-                <ItemList Ciudades={Ciudades} />
+                <ItemList loading={isLoading} Ciudades={Ciudades} />
             </div>
         </div>
     )
+
+
+
 
 
 // MODIFICAR CON FIREBASE  - ver VIDEO CLASE 12

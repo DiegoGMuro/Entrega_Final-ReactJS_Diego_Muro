@@ -225,13 +225,29 @@ export const getCiudades = () => {
     })
 } 
 
-export const getCiudadById = (ciudadId) => {
+/* export const getCiudadById = (ciudadId) => {
     return new Promise((resolve) => {
         setTimeout(() => {
             resolve(Ciudades.find(ciud=>ciud.id === ciudadId))
         }, 500)
     })
-} 
+}  */
+
+
+
+export const getCiudadById = (ciudadId) => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            const requestedItem = Ciudades.find((ciud) => ciud.id === Number(ciudadId));
+            if (requestedItem) resolve(requestedItem);
+            else reject(new Error("Ciudad no disponible"));
+        }, 500);
+    });
+}
+
+
+
+
 
 
 

@@ -2,13 +2,14 @@ import React, { useContext, useState, useEffect } from "react";
 import './ItemDetailContainer.css'
 import { getCiudadById } from "../../data/Ciudades";
 import Ciudades from "../../data/Ciudades";
-import ItemDetail from "../ItemDetail/ItemDetail";
+
+/* import ItemDetail from "../ItemDetail/ItemDetail"; */
+
 import { useParams } from 'react-router-dom';
 import ItemCount from "../ItemCount/ItemCount";
 import { cartContext } from "../../context/CartContext";   //
 import Loader from "../Loader/Loader";
 /* import { NewtonsCradle } from '@uiball/loaders'; */
-
 import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.css';
 
@@ -23,13 +24,18 @@ import {getDoc, doc} from 'firebase/firestore' */
 
 
 export default function ItemDetailContainer() {
-    const [Ciudades, setCiudades] = useState({});
+
+    const [errors, setErrors] = useState(null);   //
+
+    /* const [Ciudades, setCiudades] = useState({}); */
+
+    const [Ciudades, setCiudades] = useState(null);  // {} truthy => evalua a true
 
     const [loading, setLoading] = useState(true)
 
     //  Usamos/consumimos el Context
     const { cart, addItem, removeItem } = useContext(cartContext);
-    console.log("context:", cart);
+    /* console.log("context:", cart); */
 
     /* agrego al array del context este producto */
     /*     function onAddToCart(quantity) {
@@ -74,15 +80,25 @@ export default function ItemDetailContainer() {
                 setCiudades(response)
             })
             .catch(error => {
-                console.error(error)
+                /* console.error(error) */
+
+                setErrors(error.message);
+
             })
 
             .finally(() => {
-                setLoading(false); // Ocultar el indicador de carga después de recibir la respuesta
+                setLoading(false); 
             });
-
-
     }, [itemId])
+
+
+    if (errors)
+        return (
+            <div style={{color: "red" }}>
+                <h1>Error!!! 😒</h1>
+                <p style={{color: "green", fontSize: "16px", fontWeight: "bold" }}>{errors}</p>
+            </div>
+        );
 
 
 

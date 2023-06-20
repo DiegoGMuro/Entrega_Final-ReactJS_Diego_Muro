@@ -51,8 +51,9 @@
 }
 
 .CityImg {
-    width: 100%;
+    width: 60%;
     height: auto;
+    margin-bottom: 10px;
     border-radius: 15px;
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
 }
