@@ -65,7 +65,7 @@ export default function ItemDetailContainer() {
 
         setLoading(true);
 
-        getCiudadById(parseInt(itemId))      /*o poner NUMBER     */
+        getCiudadById(itemId)      /*o poner NUMBER - getCiudadById(parseInt(itemId))     */
             .then(response => {
                 setCiudades(response)
             })
