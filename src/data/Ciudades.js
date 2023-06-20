@@ -5,7 +5,7 @@ const Ciudades = [
         "pais": "Países Bajos",
         "continente": "Europa",
         "continenteId": 1,
-        "precioPasaje": "400000",
+        "precioPasaje": 400000,
         "lugaresInteres": ["Museo Van Gogh,", " ", "Rijksmuseum,", " ", "Barrio Rojo"],
         "imagen": "/assets/Amsterdam.jpg",
         "moneda": "Euro",
@@ -217,14 +217,21 @@ const Ciudades = [
 export default Ciudades;
 
 
-export const getCiudades = () => {
+
+
+// BORRAR DESPUES DE FIRESTORE
+/* export const getCiudades = () => {
     return new Promise((resolve) => {
         setTimeout(() => {
             resolve(Ciudades)
         }, 1000)
     })
 } 
+await getCiudades() */
 
+
+
+// CODIGO DEPRECADO
 /* export const getCiudadById = (ciudadId) => {
     return new Promise((resolve) => {
         setTimeout(() => {
@@ -235,7 +242,9 @@ export const getCiudades = () => {
 
 
 
-export const getCiudadById = (ciudadId) => {
+
+// BORRAR DESPUES DE FIRESTORE
+/* export const getCiudadById = (ciudadId) => {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             const requestedItem = Ciudades.find((ciud) => ciud.id === Number(ciudadId));
@@ -244,13 +253,13 @@ export const getCiudadById = (ciudadId) => {
         }, 500);
     });
 }
+ */
 
 
 
 
 
-
-
+// BORRAR DESPUES DE FIRESTORE ??
 export const getCiudadesByContinent = (continenteId) => {
     return new Promise((resolve) => {
         setTimeout(() => {

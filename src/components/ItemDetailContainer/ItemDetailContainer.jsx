@@ -1,18 +1,17 @@
 import React, { useContext, useState, useEffect } from "react";
 import './ItemDetailContainer.css'
-import { getCiudadById } from "../../data/Ciudades";
+/* import { getCiudadById } from "../../data/Ciudades"; */
 import Ciudades from "../../data/Ciudades";
-
-/* import ItemDetail from "../ItemDetail/ItemDetail"; */
-
+/* import ItemDetail from "../ItemDetail/ItemDetail"; */ // PROXIMO A BORRAR
 import { useParams } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import ItemCount from "../ItemCount/ItemCount";
 import { cartContext } from "../../context/CartContext";   //
 import Loader from "../Loader/Loader";
 /* import { NewtonsCradle } from '@uiball/loaders'; */
 import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.css';
-
+import { getCiudadById } from "../../services/firebaseConfig"; 
 
 
 
@@ -26,11 +25,8 @@ import {getDoc, doc} from 'firebase/firestore' */
 export default function ItemDetailContainer() {
 
     const [errors, setErrors] = useState(null);   //
-
     /* const [Ciudades, setCiudades] = useState({}); */
-
     const [Ciudades, setCiudades] = useState(null);  // {} truthy => evalua a true
-
     const [loading, setLoading] = useState(true)
 
     //  Usamos/consumimos el Context
@@ -48,7 +44,6 @@ export default function ItemDetailContainer() {
         /* agrego al array del context este producto */
         addItem(Ciudades, quantity);
 
-
         Swal.fire({
             title: 'Operación realizada',
             html: `Agregaste <strong>${quantity}</strong> pasajes a <strong>${Ciudades && Ciudades.nombre}</strong> al carrito`,
@@ -60,12 +55,7 @@ export default function ItemDetailContainer() {
                 icon: 'swal-icon',
             },
         });
-
-
-
-
     }
-
 
     const { itemId } = useParams()
 

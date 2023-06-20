@@ -9,7 +9,6 @@ import Nosotros from "./components/Nosotros/Nosotros";
 import Cart from "./components/Cart/Cart";              //
 import { CartProvider } from "./context/CartContext";
 import CheckoutForm from "./components/CheckoutForm/CheckoutForm";
-
 /* import Checkout from "./components/Checkout/Checkout"; */
 
 

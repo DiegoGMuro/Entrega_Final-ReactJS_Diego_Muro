@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-
-import { getCiudades } from "../../data/Ciudades";
-import { getCiudadesByContinent } from "../../data/Ciudades";
-
+/* import { getCiudades } from "../../data/Ciudades"; */
+/* import { getCiudadesByContinent } from "../../data/Ciudades"; */
 import ItemList from "../ItemList/ItemList";
 import { useParams } from 'react-router-dom';
+
+import { getCiudades } from "../../services/firebaseConfig";
+import { getCiudadesByContinent } from "../../services/firebaseConfig";
 
 /* import { pedirDatos } from "../../Helpers/PedirDatos"; */
 

@@ -2,7 +2,7 @@ import React from 'react'
 import './Checkout.css'
 import { useContext, useState } from 'react'
 import { cartContext } from '../../context/CartContext'
-import {db} from '../../services/firebaseConfig' 
+import {db} from '../../services/firebaseConfig' //
 import CheckoutForm from '../CheckoutForm/CheckoutForm'
 
 
@@ -31,7 +31,7 @@ const Checkout = () => {
 
             const ids = cart.map(prod => prod.id)
 
-            const productRef = collection (db, ' products')
+            const productRef = collection (db, "ciudades")
 
             const productsAddedFromFirestore = await getDocs(query(productRef, where(documentId(), 'in', ids)));     // FALTA CODIGO?
 
