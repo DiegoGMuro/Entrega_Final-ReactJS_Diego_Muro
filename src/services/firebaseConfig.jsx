@@ -51,10 +51,10 @@ export async function getCiudadById(idUrl) {
 
 
 // ver si cambiar "idCategory" por "continenteId"
-export async function getCiudadesByContinent(idCategory) {
+export async function getCiudadesByContinent(continenteId) {
     /* const q = query(collection(db, "cities"), where("capital", "==", true)); */
     const productsCollectionRef = collection(db, "ciudades");
-    const q = query(productsCollectionRef, where("continente", "==", idCategory));
+    const q = query(productsCollectionRef, where("continente", "==", continenteId));
     const productsSnapshot = await getDocs(q);
     const arrayDocs = productsSnapshot.docs;
     const dataDocs = arrayDocs.map((doc) => {

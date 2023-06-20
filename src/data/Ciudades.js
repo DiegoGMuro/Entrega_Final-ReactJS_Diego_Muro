@@ -18,7 +18,7 @@ const Ciudades = [
         "pais": "España",
         "continente": "Europa",
         "continenteId": 1,
-        "precioPasaje": "350000",
+        "precioPasaje": 350000,
         "lugaresInteres": ["Sagrada Familia,", " ", "Parque Güell,", " ", "La Rambla"],
         "imagen": "/assets/barcelona2.jpg",
         "moneda": "Euro",
@@ -31,7 +31,7 @@ const Ciudades = [
         "pais": "Alemania",
         "continente": "Europa",
         "continenteId": 1,
-        "precioPasaje": "450000",
+        "precioPasaje": 450000,
         "lugaresInteres": ["Puerta de Brandenburgo,", " ", "Muro de Berlín,"," ", "Museo de Pérgamo"],
         "imagen": "/assets/berlin1.jpg",
         "moneda": "Euro",
@@ -84,7 +84,7 @@ const Ciudades = [
         "pais": "Tailandia",
         "continente": "Asia",
         "continenteId": 2,
-        "precioPasaje": "600000",
+        "precioPasaje": 600000,
         "lugaresInteres": ["Gran Palacio,", " ", "Wat Phra Kaew,", " ", "Mercado flotante Damnoen Saduak"],
         "imagen": "/assets/Bangkok.jpg",
         "moneda": "Baht tailandés",
@@ -260,10 +260,10 @@ await getCiudades() */
 
 
 // BORRAR DESPUES DE FIRESTORE ??
-export const getCiudadesByContinent = (continenteId) => {
+/* export const getCiudadesByContinent = (continenteId) => {
     return new Promise((resolve) => {
         setTimeout(() => {
             resolve(Ciudades.filter(contin=>contin.continente === continenteId))
         }, 500)
     })
-} 
+}  */

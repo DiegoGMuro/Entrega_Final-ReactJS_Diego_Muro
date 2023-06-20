@@ -25,7 +25,9 @@ export default function ItemListContainer() {
 
         //  A - Ver abajo
 
-        const asyncFunc = continenteId ? getCiudadesByContinent : getCiudades
+        /* const asyncFunc = continenteId ? getCiudadesByContinent : getCiudades */
+
+        const asyncFunc = continenteId === undefined ? getCiudades : getCiudadesByContinent
 
         asyncFunc(continenteId)
             .then(response => {
@@ -34,14 +36,9 @@ export default function ItemListContainer() {
             .catch(error => {
                 console.error(error)
             })
-
             .finally(() => {                      //
                 setIsLoading(false);
             });
-
-
-
-
     }, [continenteId])
 
 
@@ -58,32 +55,32 @@ export default function ItemListContainer() {
 
 
 
-// MODIFICAR CON FIREBASE  - ver VIDEO CLASE 12
-// A - Ver abajo
+    // MODIFICAR CON FIREBASE  - ver VIDEO CLASE 12
+    // A - Ver abajo
 
-/*
-const collectionRef = continenteId
-? query(collection(db, 'Ciudades'), where ('continente', '==', continenteId))
-: collection(db, 'Ciudades")
-
-getDocs(collectionRef)
-. then(response => {
-    const productsAdapted = response.docs.map(doc =>{
-        const data = doc.data()
-        return {id: doc.id, ...data}
+    /*
+    const collectionRef = continenteId
+    ? query(collection(db, 'Ciudades'), where ('continente', '==', continenteId))
+    : collection(db, 'Ciudades")
+    
+    getDocs(collectionRef)
+    . then(response => {
+        const productsAdapted = response.docs.map(doc =>{
+            const data = doc.data()
+            return {id: doc.id, ...data}
+        })
+        setCiudades(productsAdapted)
     })
-    setCiudades(productsAdapted)
-})
-.catch(error=> {
-    console.log(error)
-})
-.finally(() =>{
-    setLoading(false)
-})
-
-
-
-*/
+    .catch(error=> {
+        console.log(error)
+    })
+    .finally(() =>{
+        setLoading(false)
+    })
+    
+    
+    
+    */
 
 
 }
