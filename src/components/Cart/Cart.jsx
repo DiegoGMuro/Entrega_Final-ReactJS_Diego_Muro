@@ -8,7 +8,6 @@ import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.css';
 
-
 import CheckoutForm from '../CheckoutForm/CheckoutForm';
 import { createOrderWithStockUpdate } from '../../services/firebaseConfig';
 import { useNavigate } from 'react-router-dom';
@@ -39,7 +38,47 @@ export default Cart       */           //
 
 
 const Cart = () => {
-    const { cart, clearCart, handleCheckout, quantity, removeItem } = useContext(cartContext);
+    const { cart, clearCart, handleCheckout, quantity, countTotalPrice, removeItem } = useContext(cartContext);
+
+    const navigateTo = useNavigate();        //
+
+
+    // NUEVO 21/6
+    async function handleConfirm() {
+        const order = {
+            items: cart,
+            buyer: {
+                name: "Diego Muro",
+                phone: 123123,
+                email: "diegomuro@mail.com",
+            },
+            date: new Date(),
+            /* price: countTotalPrice(), */
+            price: calculateTotal(),
+        };
+
+        try {
+            const id = await createOrderWithStockUpdate(order);
+            console.log("respuesta", id);
+            /* clear(); */
+            clearCart(); // limpio el carrito dps de hacer la compra(despues de la confirmacion)
+
+            navigateTo(`/order-confirmation/${id}`);
+            /* COMO MUESTRO EL RESULTADO AL USUARIO DEL PEDIDO
+            1. alert: SweetAlert/toastify -> muestren el id
+            2. ***redirección: React Router -> /confirmation****
+            3. rendering condicional -> modificando un state
+          */
+        } catch (error) {
+            /* alert(error); */
+        }
+    }
+    // FIN NUEVO 21/6
+
+
+
+
+
 
     const calculateTotal = () => {
         let total = 0;
@@ -54,6 +93,7 @@ const Cart = () => {
     };
     const total = calculateTotal();
 
+
     /*     if (quantity === 0) {
             return (
                 <div>
@@ -66,6 +106,7 @@ const Cart = () => {
     const handleRemoveItem = (itemId) => {
         removeItem(itemId);
     };
+
 
     return (
         <>
@@ -107,7 +148,10 @@ const Cart = () => {
                         <br />
                         {/*   <Link to="/checkoutform" className="Button">Checkout</Link>  */}
 
-                        <Link to="/checkoutform" className="Button" onClick={handleCheckout}>Completar Formulario</Link>
+                        {/*                         <Link to="/checkoutform" className="Button" onClick={handleCheckout}>Completar Formulario</Link> */}
+
+                        {/* Temporal */}
+                        <button className="Button" onClick={handleConfirm}>Crear orden de compra</button>
 
                     </>
                 )}

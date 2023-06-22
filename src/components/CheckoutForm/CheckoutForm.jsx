@@ -3,7 +3,6 @@ import './CheckoutForm.css'
 import { useState } from 'react'
 
 
-
 const CheckoutForm = ({ onConfirm }) => {
     const [name, setName] = useState('');
     const [phone, setPhone] = useState('');
@@ -72,12 +71,11 @@ import React from 'react'
 import './CheckoutForm.css'
 import { useForm } from "react-hook-form";
 import Cart from '../Cart/Cart';
-
+/* import {handleConfirm} from '../Cart/Cart' */
 
 const CheckoutForm = () => {
 
     const { register, handleSubmit } = useForm();
-
     const enviar = (data) => {
         console.log(data);
     }
@@ -94,7 +92,7 @@ const CheckoutForm = () => {
                 <br />
                 <input type="phone" placeholder="Ingresá tu teléfono" {...register("telefono")} />
                 <br />
-                <button className="Button" type="submit">Crear Orden de compra</button>
+                <button /* onClick={handleConfirm} */ className="Button" type="submit">Crear Orden de compra</button>
 
             </form>
         </div>

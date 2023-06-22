@@ -12,7 +12,10 @@ import {
     orderBy,
     writeBatch,
 } from "firebase/firestore";
-import ciudades from "../data/Ciudades"
+import ciudades from "../data/Ciudades";
+import Swal from 'sweetalert2';
+import 'sweetalert2/dist/sweetalert2.css';
+
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -71,7 +74,8 @@ export async function getCiudadesByContinent(continenteId) {
     return dataDocs;
 }
 
-/*--------------------------------------------------------------------------------- */
+/*-----------Envio pedido a firestore----------------------------------------- */
+
 export async function createOrder(data) {
     const ordersCollectionRef = collection(db, "orders");
 
@@ -84,10 +88,12 @@ export async function createOrder(data) {
     }); */
 }
 
+/*--------BATCH UPDATE--(Lotes de escritura - STOCK-(VER CartView----------------------------------*/
+
 export async function createOrderWithStockUpdate(data) {
     const ordersCollectionRef = collection(db, "orders");
     const batch = writeBatch(db);
-    const { items } = data;
+    const { items } = data;                 // {items} viene de handleConfirm
 
     for (let itemInCart of items) {
         const refDoc = doc(db, "ciudades", itemInCart.id);
@@ -96,13 +102,30 @@ export async function createOrderWithStockUpdate(data) {
         const { stock } = docSnap.data();
         console.log(stock);
 
-        const stockToUpdate = stock - itemInCart.count;
+/*         const stockToUpdate = stock - itemInCart.quantity;        // count o quantity ? 
         if (stockToUpdate < 0) {
-            throw new Error(`No hay stock suficiente del producto: ${itemInCart.id}`);
+            throw new Error(`No hay stock suficiente del producto: ${itemInCart.id}`); 
         } else {
             const docRef = doc(db, "ciudades", itemInCart.id);
             batch.update(docRef, { stock: stockToUpdate });
         }
+ */
+
+
+        const stockToUpdate = stock - itemInCart.quantity; // ¿count o quantity?
+        if (stockToUpdate < 0) {
+            Swal.fire({
+                icon: 'error',
+                title: '¡Error!',
+                html: `<span style="color: red; font-weight: bold;">No hay pasajes disponibles para el/los destino/s seleccionado/s: ${itemInCart.id}</span>`,
+            });
+            throw new Error(`No hay pasajes disponibles para el/los destino/s seleccionado/s: ${itemInCart.id}`);
+        } else {
+            const docRef = doc(db, "ciudades", itemInCart.id);
+            batch.update(docRef, { stock: stockToUpdate });
+        }
+
+
     }
 
     await batch.commit();
@@ -111,7 +134,10 @@ export async function createOrderWithStockUpdate(data) {
     return response.id;
 }
 
-export async function exportDataWithBatch() {
+
+/*------BATCH UPDATE--(Lotes de escritura 2) - EXPORTAR PRODUCTOS EN BATCH A FIREBASE-------*/
+
+/* export async function exportDataWithBatch() {
     const batch = writeBatch(db);
 
     const collectionRef = collection(db, "ciudades");
@@ -126,4 +152,4 @@ export async function exportDataWithBatch() {
 
     await batch.commit();
     console.log("Items Exportados");
-}
+} */

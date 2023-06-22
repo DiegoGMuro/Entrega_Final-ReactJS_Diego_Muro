@@ -48,6 +48,11 @@ export const CartProvider = ({ children }) => {
     }
 
 
+    function getItem(id) {                                              //
+        const itemBuscado = cart.find((item) => item.id === id);
+        return itemBuscado;
+        /* {} => truthy */
+    }
 
 
 
@@ -70,6 +75,15 @@ export const CartProvider = ({ children }) => {
         return total;
     }
 
+// DUPLICADA CON "calculateTotal"??
+
+    function countTotalPrice() {                                            //
+        let total = 0;
+        cart.forEach((item) => {
+            total += item.price * item.quantity;
+        });
+        return total;
+    }
 
 
     /*     const removeItem = (itemId) => {                                 
@@ -81,6 +95,8 @@ export const CartProvider = ({ children }) => {
         setCart(cart.filter((item) => item.id !== idDelete));
     }
 
+
+    // FUNCION PARA LIMPIAR EL CARRITO DESPUES DE LA COMPRA
     const clearCart = () => {                                         // Remueve todos los Items
         setCart([])
 
@@ -106,13 +122,14 @@ export const CartProvider = ({ children }) => {
 
 
     return (
-        <cartContext.Provider value={{ cart, setCart, addItem, countItems, removeItem, clearCart, handleCheckout, isInCart  /* , precioTotal */ }}>
+        <cartContext.Provider value={{ cart, setCart, addItem, countItems, getItem, removeItem, clearCart, handleCheckout, countTotalPrice, isInCart  /* , precioTotal */ }}>
             <div className="cart-container">
                 {children}
             </div>
         </cartContext.Provider>
     );
 }
+
 
 /*
 const precioTotal = () =>{
