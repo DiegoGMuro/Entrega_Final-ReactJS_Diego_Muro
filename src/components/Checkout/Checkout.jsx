@@ -1,4 +1,4 @@
-import React from 'react'
+/* import React from 'react'
 import './Checkout.css'
 import { useContext, useState } from 'react'
 import { cartContext } from '../../context/CartContext'
@@ -33,9 +33,13 @@ const Checkout = () => {
 
             const productRef = collection (db, "ciudades")
 
-            const productsAddedFromFirestore = await getDocs(query(productRef, where(documentId(), 'in', ids)));     // FALTA CODIGO?
+            const productsAddedFromFirestore = await getDocs(query(productRef, where(documentId(), 'in', ids)));   */ 
+            
+            
+            // FALTA CODIGO?
 
-            const { docs } = productsAddedFromFirestore
+
+            /* const { docs } = productsAddedFromFirestore
 
             docs.foreach (doc => {
                 const dataDoc = doc.data()
@@ -88,4 +92,4 @@ const Checkout = () => {
     )
 }
 
-export default Checkout
+export default Checkout */

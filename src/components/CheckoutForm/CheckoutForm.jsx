@@ -92,7 +92,7 @@ const CheckoutForm = () => {
                 <br />
                 <input type="phone" placeholder="Ingresá tu teléfono" {...register("telefono")} />
                 <br />
-                <button /* onClick={handleConfirm} */ className="Button" type="submit">Crear Orden de compra</button>
+                <button /* onClick={handleConfirm} */ className="Button" type="submit">Crear Orden de compra2</button>
 
             </form>
         </div>

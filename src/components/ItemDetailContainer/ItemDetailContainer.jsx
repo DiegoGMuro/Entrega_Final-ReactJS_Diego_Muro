@@ -29,6 +29,11 @@ export default function ItemDetailContainer() {
     const [Ciudades, setCiudades] = useState(null);  // {} truthy => evalua a true
     const [loading, setLoading] = useState(true)
 
+
+    const [stock, setStock] = useState(0);
+
+
+
     //  Usamos/consumimos el Context
     const { cart, addItem, removeItem } = useContext(cartContext);
     /* console.log("context:", cart); */
@@ -68,6 +73,9 @@ export default function ItemDetailContainer() {
         getCiudadById(itemId)      /*antes era:  getCiudadById(parseInt(itemId))     */
             .then(response => {
                 setCiudades(response)
+
+                setStock(response.stock); // Actualiza el estado del stock
+
             })
             .catch(error => {
                 /* console.error(error) */
@@ -129,7 +137,7 @@ export default function ItemDetailContainer() {
                         </div>
 
                         {/* condicionales / rendering condicional */}
-                        <ItemCount onAddToCart={onAddToCart} stock={5} />
+                        <ItemCount onAddToCart={onAddToCart} stock={stock} />
                         <br />
                         {/* BOTON TEMPORAL */}
                         <button className="Button" onClick={() => removeItem(Ciudades.id)}>Eliminar</button>
