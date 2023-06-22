@@ -74,7 +74,7 @@ import { useForm } from "react-hook-form";
 import Cart from '../Cart/Cart';
 
 
-const Contacto = () => {
+const CheckoutForm = () => {
 
     const { register, handleSubmit } = useForm();
 
@@ -94,7 +94,7 @@ const Contacto = () => {
                 <br />
                 <input type="phone" placeholder="Ingresá tu teléfono" {...register("telefono")} />
                 <br />
-                <button className="Button" type="submit">Enviar</button>
+                <button className="Button" type="submit">Crear Orden de compra</button>
 
             </form>
         </div>
@@ -102,4 +102,4 @@ const Contacto = () => {
     )
 }
 
-export default Contacto
+export default CheckoutForm

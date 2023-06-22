@@ -25,11 +25,11 @@ export default function ItemListContainer() {
 
         //  A - Ver abajo
 
-        /* const asyncFunc = continenteId ? getCiudadesByContinent : getCiudades */
+        /* const fetchData = continenteId ? getCiudadesByContinent : getCiudades */
 
-        const asyncFunc = continenteId === undefined ? getCiudades : getCiudadesByContinent
+        const fetchData = continenteId === undefined ? getCiudades : getCiudadesByContinent
 
-        asyncFunc(continenteId)
+        fetchData(continenteId)
             .then(response => {
                 setCiudades(response)
             })
@@ -50,6 +50,7 @@ export default function ItemListContainer() {
             </div>
         </div>
     )
+}
 
 
 
@@ -83,4 +84,3 @@ export default function ItemListContainer() {
     */
 
 
-}

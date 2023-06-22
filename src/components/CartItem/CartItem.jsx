@@ -5,6 +5,13 @@ import Ciudades from '../../data/Ciudades';
 import Carousel from '../Carrusel/Carrusel';
 
 
+import { useContext } from 'react';
+import { cartContext } from '../../context/CartContext';
+import CheckoutForm from '../CheckoutForm/CheckoutForm';
+import { createOrderWithStockUpdate } from '../../services/firebaseConfig';
+import { useNavigate } from 'react-router-dom';
+
+
 
 const CartItem = ({ id, nombre, pais, imagen, precioPasaje, quantity, moneda, idioma }) => {
 

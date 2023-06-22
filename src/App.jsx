@@ -11,6 +11,8 @@ import { CartProvider } from "./context/CartContext";
 import CheckoutForm from "./components/CheckoutForm/CheckoutForm";
 /* import Checkout from "./components/Checkout/Checkout"; */
 
+/* import OrderConfirm from "./components/OrderConfirm/OrderConfirm"; */
+
 
 function App() {
   return (
@@ -27,6 +29,9 @@ function App() {
             <Route path='/cart' element={<Cart />} />
             <Route path='/CheckoutForm' element={<CheckoutForm />} />
             {/*              <Route path='/checkout' element={<Checkout/>} />    */}
+
+{/*             <Route path="/order-confirmation/:orderid" element={<OrderConfirm />}/> */}
+
             <Route path='*' element={<h1 className="color-error">404 NOT FOUND</h1>} />
           </Routes>
         </BrowserRouter>

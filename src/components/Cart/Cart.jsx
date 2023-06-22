@@ -4,11 +4,14 @@ import { useContext } from 'react';
 import { cartContext } from '../../context/CartContext';
 import CartItem from '../CartItem/CartItem';
 import { Link } from 'react-router-dom';
-
 /* import Swal from 'sweetalert'; */
 import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.css';
 
+
+import CheckoutForm from '../CheckoutForm/CheckoutForm';
+import { createOrderWithStockUpdate } from '../../services/firebaseConfig';
+import { useNavigate } from 'react-router-dom';
 
 
 /* const Cart = () => {
@@ -102,21 +105,14 @@ const Cart = () => {
                         <Link to='/' className="Option">Seguir comprando</Link>
                         <br />
                         <br />
-                       {/*   <Link to="/checkoutform" className="Button">Checkout</Link>  */}
+                        {/*   <Link to="/checkoutform" className="Button">Checkout</Link>  */}
 
-                         <Link to="/checkoutform" className="Button" onClick={handleCheckout}>Terminar compra</Link>
-
-
-
+                        <Link to="/checkoutform" className="Button" onClick={handleCheckout}>Completar Formulario</Link>
 
                     </>
                 )}
             </div>
         </>
     );
-
-
 }
-
-
 export default Cart;
