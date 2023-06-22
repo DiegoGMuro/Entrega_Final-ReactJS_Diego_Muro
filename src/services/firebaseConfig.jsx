@@ -56,7 +56,14 @@ export async function getCiudades() {
 export async function getCiudadById(idUrl) {
     const docRef = doc(db, "ciudades", idUrl);
     const docSnap = await getDoc(docRef);
-    return { id: docSnap.id, ...docSnap.data() };
+
+    if(docSnap.data()){
+        return { id: docSnap.id, ...docSnap.data() };
+    }else{
+        throw new Error("Ciudad no disponible")
+    }
+
+    /* return { id: docSnap.id, ...docSnap.data() }; */
 }
 
 
