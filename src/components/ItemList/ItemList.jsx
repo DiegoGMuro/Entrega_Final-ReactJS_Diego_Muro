@@ -6,8 +6,7 @@ import Loader from "../Loader/Loader";
 
 
 export default function ItemList({ Ciudades, isLoading }) {
-    /* early return - retorno anticipado */
-    /*  if (Ciudades.length === 0) return <Loader />; */
+
     if (isLoading) return <Loader />;
 
     if (Ciudades.length === 0) return <h2 style={{ fontSize: '34px', color: 'red' }}>No se encuentran Ciudades!! 😒 </h2>;

@@ -14,22 +14,8 @@ export const CartProvider = ({ children }) => {
     console.log(cart)
 
 
-// Agrega cantidad de items al carrito, puedo usar PUSH tambien
-
-/*     const addItem = (item, quantity) => {                              
-        if (!isInCart(item.id)) {
-            setCart(prev => [...prev, { ...item, quantity }])
-        } else {
-            console.error("El producto ya fue agregado")
-        }
-    } */
-
-
-
-
-
     function addItem(item, quantity) {
-        const newCart = [...cart]; // shallow copy
+        const newCart = [...cart];
 
         if (isInCart(item.id)) {
             setCart(
@@ -48,23 +34,10 @@ export const CartProvider = ({ children }) => {
     }
 
 
-    function getItem(id) {                                              //
+    function getItem(id) {
         const itemBuscado = cart.find((item) => item.id === id);
         return itemBuscado;
-        /* {} => truthy */
     }
-
-
-
-
-
-
-    // Codigo del profe
-    /*     function addItem(item, quantity) {
-            const newCart = [...cart]; // shallow copy/deep clone
-            newCart.push({ ...item, quantity });
-            setCart(newCart);
-          } */
 
 
     function countItems() {
@@ -75,9 +48,8 @@ export const CartProvider = ({ children }) => {
         return total;
     }
 
-// DUPLICADA CON "calculateTotal"??
 
-    function countTotalPrice() {                                            //
+    function countTotalPrice() {
         let total = 0;
         cart.forEach((item) => {
             total += item.price * item.quantity;
@@ -85,22 +57,17 @@ export const CartProvider = ({ children }) => {
         return total;
     }
 
-
-    /*     const removeItem = (itemId) => {                                 
-            const cartUpdated = cart.filter(prod => prod.id !== itemId)
-            setCart(cartUpdated)
-        } */
-
-    function removeItem(idDelete) {                                       // Remueve un item del Cart usando su ID
+    // Remueve un item del Cart usando su ID
+    function removeItem(idDelete) {
         setCart(cart.filter((item) => item.id !== idDelete));
     }
 
 
     // FUNCION PARA LIMPIAR EL CARRITO DESPUES DE LA COMPRA
-    const clearCart = () => {                                         // Remueve todos los Items
+    const clearCart = () => {
         setCart([])
-
     }
+
 
     const handleCheckout = () => {
         Swal.fire({
@@ -108,11 +75,9 @@ export const CartProvider = ({ children }) => {
             title: 'Finalizacion de la compra',
             text: 'Ud está siendo redirigido al cierre de la compra',
             showConfirmButton: false,
-            timer: 3000, 
+            timer: 3000,
         });
     };
-
-
 
 
 
@@ -122,7 +87,7 @@ export const CartProvider = ({ children }) => {
 
 
     return (
-        <cartContext.Provider value={{ cart, setCart, addItem, countItems, getItem, removeItem, clearCart, handleCheckout, countTotalPrice, isInCart  /* , precioTotal */ }}>
+        <cartContext.Provider value={{ cart, setCart, addItem, countItems, getItem, removeItem, clearCart, handleCheckout, countTotalPrice, isInCart }}>
             <div className="cart-container">
                 {children}
             </div>
@@ -131,68 +96,3 @@ export const CartProvider = ({ children }) => {
 }
 
 
-/*
-const precioTotal = () =>{
-    return cart.reduce((acc, prod) => scc + prod.precio * prod.cantidad, 0)
-}
-*/
-
-
-// CARPI CODER
-/*
-export const CartContext = createContext();
-
-const carritoInicial = JSON.parse(localStorage.getItem("carrito")) || [];
-
-export const CartProvider = ({children}) => {
-
-    const [carrito, setCarrito] = useState(carritoInicial);
-
-    const agregarAlCarrito = (item, cantidad) => {
-        const itemAgregado = { ...item, cantidad };
-
-        const nuevoCarrito = [...carrito];
-        const estaEnElCarrito = nuevoCarrito.find((producto) => producto.id === itemAgregado.id);
-
-        if (estaEnElCarrito) {
-            estaEnElCarrito.cantidad += cantidad;
-        } else {
-            nuevoCarrito.push(itemAgregado);
-        }
-        setCarrito(nuevoCarrito);
-    }
-
-    const cantidadEnCarrito = () => {
-        return carrito.reduce((acc, prod) => acc + prod.cantidad, 0);
-    }
-
-    const precioTotal = () => {
-        return carrito.reduce((acc, prod) => acc + prod.precio * prod.cantidad, 0);
-    }
-
-    const vaciarCarrito = () => {
-        setCarrito([]);
-    }
-
-    useEffect(() => {
-        localStorage.setItem("carrito", JSON.stringify(carrito));
-    }, [carrito])
-    
-
-    return (
-        <CartContext.Provider value={ {
-            carrito,
-            agregarAlCarrito,
-            cantidadEnCarrito,
-            precioTotal,
-            vaciarCarrito
-        } }>
-            {children}
-        </CartContext.Provider>
-    )
-
-
-
-}
-
-*/

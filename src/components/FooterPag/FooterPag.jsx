@@ -11,17 +11,17 @@ export default function Footer() {
 
             <div className="footer-container">
                 <p>
-                Copyright © 2023 - Diego Muro -
-                All rights reserved 😉
+                    Copyright © 2023 - Diego Muro -
+                    All rights reserved 😉
                 </p>
                 <div className="social-links">
-                    <a href="https://es-la.facebook.com/" target="_blank" rel="noopener noreferrer"><img src={facebook} alt="facebook"/>
+                    <a href="https://es-la.facebook.com/" target="_blank" rel="noopener noreferrer"><img src={facebook} alt="facebook" />
                         <i className="fab fa-facebook"></i>
                     </a>
-                    <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer"><img src={twitter} alt="facebook"/>
+                    <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer"><img src={twitter} alt="facebook" />
                         <i className="fab fa-twitter"></i>
                     </a>
-                    <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer"><img src={instagram} alt="facebook"/>
+                    <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer"><img src={instagram} alt="facebook" />
                         <i className="fab fa-instagram"></i>
                     </a>
                 </div>

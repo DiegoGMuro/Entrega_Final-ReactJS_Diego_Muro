@@ -5,15 +5,14 @@ import LayOut from "../LayOut/LayOut";
 import { Link } from "react-router-dom";
 
 
-export default function ItemCount({ stock, initial, /* onAdd, */ onAddToCart /* props */ }) {
+export default function ItemCount({ stock, initial, onAddToCart }) {
 
-    const [quantity, setQuantity] = useState(/* initial */ 0);
-
-    const [addToCartClicked, setAddToCartClicked] = useState(false);  // 
+    const [quantity, setQuantity] = useState(0);
+    const [addToCartClicked, setAddToCartClicked] = useState(false);
 
 
     const increment = () => {
-        if (quantity < /*props.stock*/stock) {
+        if (quantity < stock) {
             setQuantity(quantity + 1)
         }
     }
@@ -26,7 +25,7 @@ export default function ItemCount({ stock, initial, /* onAdd, */ onAddToCart /* 
 
     const handleAddToCart = () => {
         if (quantity > 0) {
-            setAddToCartClicked(true);   //
+            setAddToCartClicked(true);
             onAddToCart(quantity);
         }
     };
@@ -44,29 +43,7 @@ export default function ItemCount({ stock, initial, /* onAdd, */ onAddToCart /* 
                 </div>
 
             )}
-
             <div>
-                {/*                 <button className="Button" onClick={() => onAdd(quantity)} disabled={!stock}>Agregar viaje</button> */}
-
-
-                {/*                 <button className="Button" onClick={() => onAddToCart(quantity)} disabled={!stock}>
-                Agregar viaje</button> */}
-
-
-
-
-                {/*  <button className="Button" onClick={handleAddToCart} disabled={!stock}>
-                    Agregar viaje
-                </button>
-                {quantity > 0 && (
-                    <Link to="/cart" className="Option">
-                        Ir al carrito
-                    </Link>
-                )} */}
-
-
-
-
 
                 {!addToCartClicked && (
                     <button className="Button" onClick={handleAddToCart} disabled={!stock}>
@@ -79,7 +56,7 @@ export default function ItemCount({ stock, initial, /* onAdd, */ onAddToCart /* 
                         <Link to="/cart" className="Option">
                             Ir al carrito
                         </Link>
-                        <br /> 
+                        <br />
                         <br />
                         <Link to='/' className="Option">Seguir comprando</Link>
                     </>

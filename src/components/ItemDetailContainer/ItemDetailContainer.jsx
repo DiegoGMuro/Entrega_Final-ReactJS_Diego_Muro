@@ -1,48 +1,27 @@
 import React, { useContext, useState, useEffect } from "react";
 import './ItemDetailContainer.css'
-/* import { getCiudadById } from "../../data/Ciudades"; */
 import Ciudades from "../../data/Ciudades";
-/* import ItemDetail from "../ItemDetail/ItemDetail"; */ // PROXIMO A BORRAR
 import { useParams } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import ItemCount from "../ItemCount/ItemCount";
-import { cartContext } from "../../context/CartContext";   //
+import { cartContext } from "../../context/CartContext";
 import Loader from "../Loader/Loader";
-/* import { NewtonsCradle } from '@uiball/loaders'; */
 import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.css';
-import { getCiudadById } from "../../services/firebaseConfig"; 
-
-
-
-
-/* 
-import {getDoc, doc} from 'firebase/firestore' */
-/* import {db} from '../../services/firebaseConfig' */
+import { getCiudadById } from "../../services/firebaseConfig";
 
 
 
 export default function ItemDetailContainer() {
 
-    const [errors, setErrors] = useState(null);   //
-    /* const [Ciudades, setCiudades] = useState({}); */
-    const [Ciudades, setCiudades] = useState(null);  // {} truthy => evalua a true
+    const [errors, setErrors] = useState(null);
+    const [Ciudades, setCiudades] = useState(null);
     const [loading, setLoading] = useState(true)
-
-
     const [stock, setStock] = useState(0);
-
 
 
     //  Usamos/consumimos el Context
     const { cart, addItem, removeItem } = useContext(cartContext);
-    /* console.log("context:", cart); */
-
-    /* agrego al array del context este producto */
-    /*     function onAddToCart(quantity) {
-            addItem(Ciudades, quantity);
-            alert(`Agregaste ${quantity} pasajes a ${Ciudades && Ciudades.nombre} al carrito `);
-        } */
 
 
     function onAddToCart(quantity) {
@@ -64,53 +43,40 @@ export default function ItemDetailContainer() {
 
     const { itemId } = useParams()
 
-    // A - Ver abajo
 
     useEffect(() => {
-
         setLoading(true);
 
-        getCiudadById(itemId)      /*antes era:  getCiudadById(parseInt(itemId))     */
+        getCiudadById(itemId)      /*antes era:  getCiudadById(parseInt(itemId))*/
             .then(response => {
                 setCiudades(response)
-
                 setStock(response.stock); // Actualiza el estado del stock
-
             })
             .catch(error => {
-                /* console.error(error) */
-
                 setErrors(error.message);
-
             })
-
             .finally(() => {
-                setLoading(false); 
+                setLoading(false);
             });
     }, [itemId])
 
 
+
     if (errors)
         return (
-            <div style={{color: "red" }}>
+            <div style={{ color: "red" }}>
                 <h1>Error!!! 😒</h1>
-                <p style={{color: "green", fontSize: "16px", fontWeight: "bold" }}>{errors}</p>
+                <p style={{ color: "green", fontSize: "16px", fontWeight: "bold" }}>{errors}</p>
             </div>
         );
 
 
-
     return (
-        /* Separar en componente de presentación: <ItemDetail .../> */
-
         <div className="ItemDetailContainer">
-
 
             {loading ? (
                 <Loader /> // Mostrar el indicador de carga mientras se está cargando la información
             ) : (
-
-                /* { Ciudades ? (*/
                 <>
                     <div className="ItemDetailContainer">
                         <h2 className="NameCity">Ciudad Seleccionada : {Ciudades.nombre}</h2>
@@ -135,56 +101,13 @@ export default function ItemDetailContainer() {
                                 <strong style={{ fontWeight: "bold" }}>Lugares de interés:</strong> {Ciudades.lugaresInteres}
                             </p>
                         </div>
-
-                        {/* condicionales / rendering condicional */}
                         <ItemCount onAddToCart={onAddToCart} stock={stock} />
                         <br />
-                        {/* BOTON TEMPORAL */}
                         <button className="Button" onClick={() => removeItem(Ciudades.id)}>Eliminar</button>
-
                     </div>
                 </>
-                /* ) : (
-                    <p>Cargando...</p> */
-            )/*)*/}
+            )}
         </div>
-
-
-        /*         <div className="ItemDetailContainer">
-                    <ItemDetail {...Ciudades} />
-                </div> */
-
-
     );
 }
 
-
-
-
-
-
-
-// MODIFICAR CON FIREBASE  - ver VIDEO CLASE 12
-// A - Ver abajo
-
-/*
-useEffect (() => {
-    setLoading(true)
-
-    const docRef = doc(db, 'Ciudades', itemId)
-
-    getDoc(docRef)
-    .then(response => {
-        const data = response.data()
-        const productAdapted = { id: response.id, ...data}
-        setCiudades(productAdapted)
-    })
-    .catch(error => {
-        console.log(error)
-    })
-    .finally(()=> {
-        setLoading(false)
-    })
-}, [itemId])
-
-*/

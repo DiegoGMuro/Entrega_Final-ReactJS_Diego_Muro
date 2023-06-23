@@ -1,4 +1,3 @@
-
 import React from 'react';
 import './CartItem.css';
 import Ciudades from '../../data/Ciudades';
@@ -12,8 +11,6 @@ import { useNavigate } from 'react-router-dom';
 
 
 const CartItem = ({ id, nombre, pais, imagen, precioPasaje, quantity, moneda, idioma }) => {
-
-  /*   console.log(pais) */
 
   const precio = parseFloat(precioPasaje);
   const cantidad = parseInt(quantity);
@@ -44,7 +41,4 @@ const CartItem = ({ id, nombre, pais, imagen, precioPasaje, quantity, moneda, id
     </div>
   );
 }
-
-/* console.log(CartItem) */
-
 export default CartItem;

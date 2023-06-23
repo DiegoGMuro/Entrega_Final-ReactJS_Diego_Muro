@@ -12,5 +12,4 @@ function Layout({ children, title }) {
         </div>
     );
 }
-
 export default Layout;

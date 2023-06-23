@@ -36,15 +36,11 @@ const firebaseApp = initializeApp(firebaseConfig);
 const db = getFirestore(firebaseApp);
 
 
-/* Promise disfrazada de function - El nombre tiene que ser el mismo de FIRESTORE*/
+
 export async function getCiudades() {
     const productsCollectionRef = collection(db, "ciudades");
-
-    /* const q = query(productsCollectionRef, orderBy("index")); */
-
-    const productsSnapshot = await getDocs(productsCollectionRef  /* q */);
+    const productsSnapshot = await getDocs(productsCollectionRef);
     const arrayDocs = productsSnapshot.docs;
-
     const dataDocs = arrayDocs.map((doc) => {
         return { ...doc.data(), id: doc.id };
     });
@@ -52,24 +48,19 @@ export async function getCiudades() {
 }
 
 
-/* Promise disfrazada de function */
 export async function getCiudadById(idUrl) {
     const docRef = doc(db, "ciudades", idUrl);
     const docSnap = await getDoc(docRef);
-
-    if(docSnap.data()){
+    if (docSnap.data()) {
         return { id: docSnap.id, ...docSnap.data() };
-    }else{
+    } else {
         throw new Error("Ciudad no disponible")
     }
-
-    /* return { id: docSnap.id, ...docSnap.data() }; */
 }
 
 
-// ver si cambiar "idCategory" por "continenteId"
+
 export async function getCiudadesByContinent(continenteId) {
-    /* const q = query(collection(db, "cities"), where("capital", "==", true)); */
     const productsCollectionRef = collection(db, "ciudades");
     const q = query(productsCollectionRef, where("continente", "==", continenteId));
     const productsSnapshot = await getDocs(q);
@@ -77,7 +68,6 @@ export async function getCiudadesByContinent(continenteId) {
     const dataDocs = arrayDocs.map((doc) => {
         return { ...doc.data(), id: doc.id };
     });
-
     return dataDocs;
 }
 
@@ -88,14 +78,9 @@ export async function createOrder(data) {
 
     const response = await addDoc(ordersCollectionRef, data);
     return response.id;
-
-    /*  addDoc(ordersCollectionRef, data).then((respuesta) => {
-      console.log(respuesta);
-      console.log("Orden creada", respuesta.id);
-    }); */
 }
 
-/*--------BATCH UPDATE--(Lotes de escritura - STOCK-(VER CartView----------------------------------*/
+/*--------BATCH UPDATE--(Lotes de escritura - STOCK-----------------------------------*/
 
 export async function createOrderWithStockUpdate(data) {
     const ordersCollectionRef = collection(db, "orders");
@@ -109,17 +94,8 @@ export async function createOrderWithStockUpdate(data) {
         const { stock } = docSnap.data();
         console.log(stock);
 
-/*         const stockToUpdate = stock - itemInCart.quantity;        // count o quantity ? 
-        if (stockToUpdate < 0) {
-            throw new Error(`No hay stock suficiente del producto: ${itemInCart.id}`); 
-        } else {
-            const docRef = doc(db, "ciudades", itemInCart.id);
-            batch.update(docRef, { stock: stockToUpdate });
-        }
- */
 
-
-        const stockToUpdate = stock - itemInCart.quantity; // ¿count o quantity?
+        const stockToUpdate = stock - itemInCart.quantity;
         if (stockToUpdate < 0) {
             Swal.fire({
                 icon: 'error',
@@ -131,8 +107,6 @@ export async function createOrderWithStockUpdate(data) {
             const docRef = doc(db, "ciudades", itemInCart.id);
             batch.update(docRef, { stock: stockToUpdate });
         }
-
-
     }
 
     await batch.commit();
@@ -141,22 +115,3 @@ export async function createOrderWithStockUpdate(data) {
     return response.id;
 }
 
-
-/*------BATCH UPDATE--(Lotes de escritura 2) - EXPORTAR PRODUCTOS EN BATCH A FIREBASE-------*/
-
-/* export async function exportDataWithBatch() {
-    const batch = writeBatch(db);
-
-    const collectionRef = collection(db, "ciudades");
-
-    for (let item of ciudades) {
-        item.index = item.id;
-        delete item.id;
-
-        const docRef = doc(collectionRef);
-        batch.set(docRef, item);
-    }
-
-    await batch.commit();
-    console.log("Items Exportados");
-} */

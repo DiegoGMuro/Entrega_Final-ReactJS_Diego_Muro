@@ -2,22 +2,10 @@ import React from "react";
 import "./Navbar.css";
 import CartWidget from "../CartWidget/CartWidget";
 import avion from './assets/Avion3.png';
-import { NavLink, Link, /* useLocation  */} from "react-router-dom";
-/* import { useEffect } from "react"; */
+import { NavLink, Link, } from "react-router-dom";
 
 
 export default function NavBar() {
-
-
-    /*
-    // re-scroll to top cada vez que cambia la URL ("location")
-    let location = useLocation();
-
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, [location]); */
-
-
 
     return (
         <nav>
@@ -31,11 +19,6 @@ export default function NavBar() {
                         </li>
                     </Link>
                 </h2>
-                {/*                 <li className="nav-item">
-                    <a className="nav-link" href="/">
-                        Home
-                    </a>
-                </li> */}
                 <li className="nav-item">
                     <NavLink to={`/nosotros`} className={({ isActive }) => isActive ? 'ActiveOption' : 'Option'}>Nosotros</NavLink>
                 </li>
@@ -48,11 +31,6 @@ export default function NavBar() {
                 <li className="nav-item">
                     <NavLink to={`/continente/America`} className={({ isActive }) => isActive ? 'ActiveOption' : 'Option'}>America</NavLink>
                 </li>
-
-{/*                 <li className="nav-item">
-                    <NavLink to={`/CheckoutForm`} className={({ isActive }) => isActive ? 'ActiveOption' : 'Option'}>Contacto</NavLink>
-                </li> */}
-
                 <CartWidget />
             </ul>
         </nav>
