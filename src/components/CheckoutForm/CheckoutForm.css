@@ -45,3 +45,23 @@
     background-color: #cccccc;
     cursor: not-allowed;
 }
+
+
+.Button2 {
+    font-size: 13px;
+    padding: 10px 20px;
+    background-color: #1741cc;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.Button2:hover {
+    background-color: darkblue;
+}
+
+.Button2:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}

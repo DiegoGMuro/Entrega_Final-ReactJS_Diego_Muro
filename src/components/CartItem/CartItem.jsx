@@ -3,8 +3,6 @@ import React from 'react';
 import './CartItem.css';
 import Ciudades from '../../data/Ciudades';
 import Carousel from '../Carrusel/Carrusel';
-
-
 import { useContext } from 'react';
 import { cartContext } from '../../context/CartContext';
 import CheckoutForm from '../CheckoutForm/CheckoutForm';
@@ -30,9 +28,6 @@ const CartItem = ({ id, nombre, pais, imagen, precioPasaje, quantity, moneda, id
 
 
   return (
-
-
-
     <div className="CartItem">
       <h4>Destino: {nombre}</h4>
       <img src={imagen} className="Miniatura" alt="Miniatura" />
@@ -47,8 +42,6 @@ const CartItem = ({ id, nombre, pais, imagen, precioPasaje, quantity, moneda, id
       <p><span style={{ color: 'darkgreen', fontWeight: 'bold' }}>Cantidad:</span> {quantity}</p>
       <p><span style={{ color: 'darkgreen', fontWeight: 'bold' }}>Subtotal:</span> {subtotal.toLocaleString('es-AR', { style: 'currency', currency: 'ARS', maximumFractionDigits: 0 })}</p>
     </div>
-
-
   );
 }
 

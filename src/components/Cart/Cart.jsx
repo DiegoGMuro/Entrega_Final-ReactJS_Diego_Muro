@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom';
 /* import Swal from 'sweetalert'; */
 import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.css';
-
 import CheckoutForm from '../CheckoutForm/CheckoutForm';
 import { createOrderWithStockUpdate } from '../../services/firebaseConfig';
 import { useNavigate } from 'react-router-dom';
@@ -39,12 +38,23 @@ export default Cart       */           //
 
 const Cart = () => {
     const { cart, clearCart, handleCheckout, quantity, countTotalPrice, removeItem } = useContext(cartContext);
-
     const navigateTo = useNavigate();        //
 
 
-    // NUEVO 21/6
-    async function handleConfirm() {
+    // NUEVO 21/6  -  22/6
+    async function handleConfirm(userData) {
+        const order = {
+            items: cart,
+            buyer: userData,
+            date: new Date(),
+            /* price: countTotalPrice(), */
+            price: calculateTotal(),
+        };
+
+
+
+        /*
+            async function handleConfirm() {
         const order = {
             items: cart,
             buyer: {
@@ -53,9 +63,12 @@ const Cart = () => {
                 email: "diegomuro@mail.com",
             },
             date: new Date(),
-            /* price: countTotalPrice(), */
             price: calculateTotal(),
         };
+        */
+
+
+
 
         try {
             const id = await createOrderWithStockUpdate(order);
@@ -140,6 +153,9 @@ const Cart = () => {
                 {cart.length > 0 && (
                     <>
                         <h3 style={{ color: 'darkred' }}>Total General: {total.toLocaleString('es-AR', { style: 'currency', currency: 'ARS', maximumFractionDigits: 0 })}</h3>
+
+                        <CheckoutForm onConfirm={handleConfirm} />
+                        <br />
                         <button onClick={() => clearCart()} className="Button">Limpiar Carrito</button>
                         <br />
                         <br />
@@ -151,7 +167,8 @@ const Cart = () => {
                         {/*                         <Link to="/checkoutform" className="Button" onClick={handleCheckout}>Completar Formulario</Link> */}
 
                         {/* Temporal */}
-                        <button className="Button" onClick={handleConfirm}>Crear orden de compra</button>
+
+                        {/*                         <button className="Button" onClick={handleConfirm}>Crear orden de compra</button> */}
 
                     </>
                 )}

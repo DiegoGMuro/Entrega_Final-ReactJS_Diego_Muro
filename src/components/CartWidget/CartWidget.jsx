@@ -8,10 +8,7 @@ import { Link } from "react-router-dom";
 
 
 export default function CartWidget() {
-
-
     const {countItems } = useContext(cartContext);           //
-
 
     return (
         <Link to='/cart' className="cart-widget" style={{ display: countItems() > 0 ? "block" : " none" }} >

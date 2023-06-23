@@ -14,8 +14,6 @@ import OrderConfirm from "./components/OrderConfirm/OrderConfirm";
 /* import Checkout from "./components/Checkout/Checkout"; */
 
 
-
-
 function App() {
   return (
     <div className='App'>
@@ -30,10 +28,10 @@ function App() {
             <Route path='/nosotros' element={<Nosotros />} />
             <Route path='/cart' element={<Cart />} />
             <Route path='/CheckoutForm' element={<CheckoutForm />} />
+
             {/*              <Route path='/checkout' element={<Checkout/>} />    */}
 
             <Route path="/order-confirmation/:orderid" element={<OrderConfirm />} />
-
             <Route path='*' element={<h1 className="color-error">404 NOT FOUND</h1>} />
           </Routes>
         </BrowserRouter>

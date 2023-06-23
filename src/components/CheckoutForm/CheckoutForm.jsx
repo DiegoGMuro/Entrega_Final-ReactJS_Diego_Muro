@@ -70,34 +70,109 @@ export default CheckoutForm */
 import React from 'react'
 import './CheckoutForm.css'
 import { useForm } from "react-hook-form";
+import { useState } from "react";
 import Cart from '../Cart/Cart';
 /* import {handleConfirm} from '../Cart/Cart' */
 
-const CheckoutForm = () => {
-
+/* const CheckoutForm = () => {
     const { register, handleSubmit } = useForm();
     const enviar = (data) => {
         console.log(data);
     }
 
     return (
-
         <div className="Container">
-            <h1 className="main-title">Datos del comprador</h1>
+            <h1 className="main-title">Ingresar datos para finalizar la compra ✈️</h1>
             <form className="Form" onSubmit={handleSubmit(enviar)}>
-
                 <input type="text" placeholder="Ingresá tu nombre" {...register("nombre")} />
                 <br />
                 <input type="email" placeholder="Ingresá tu e-mail" {...register("email")} />
                 <br />
                 <input type="phone" placeholder="Ingresá tu teléfono" {...register("telefono")} />
                 <br />
-                <button /* onClick={handleConfirm} */ className="Button" type="submit">Crear Orden de compra2</button>
+                <button */
 
+/* onClick={handleConfirm} */
+
+/*                 className="Button" type="submit">Crear Orden de compra2</button>
             </form>
         </div>
-
     )
 }
+export default CheckoutForm */
 
-export default CheckoutForm
+/*---------------------------------------------------------------------*/
+
+export default function CheckoutForm({ onConfirm }) {
+    const [userData, setUserData] = useState({
+        nombre: "",
+        phone: "",
+        email: "",
+    });
+
+    function onInputChange(evt) {
+        const prop = evt.target.name;
+        const value = evt.target.value;
+
+        const newData = { ...userData };
+        newData[prop] = value;
+        setUserData(newData);
+    }
+
+    function onSubmit(evt) {
+        evt.preventDefault();
+        console.log(userData);
+        onConfirm(userData);
+    }
+
+    function handleReset(evt) {
+        evt.preventDefault();
+        setUserData({
+            nombre: "",
+            phone: "",
+            email: "",
+        });
+    }
+
+    const styleInput = { display: "flex", marginBottom: 24 };
+    const label = { width: "100px", marginRight: 4 };
+
+    return (
+        <form className="Container" onSubmit={onSubmit}>
+            <h2>Ingresar datos para finalizar la compra ✈️</h2>
+            <div style={styleInput}>
+                <label style={label}>Nombre</label>
+                <input
+                    value={userData.nombre}
+                    name="nombre"
+                    type="text"
+                    onChange={onInputChange}/>
+            </div>
+            <div style={styleInput}>
+                <label style={label}>Teléfono</label>
+                <input
+                    value={userData.phone}
+                    name="phone"
+                    type="text"
+                    onChange={onInputChange}
+                />
+            </div>
+            <div style={styleInput}>
+                <label style={label}>Email</label>
+                <input
+                    value={userData.email}
+                    name="email"
+                    type="text"
+                    onChange={onInputChange}
+                />
+            </div>
+            <div>
+            <button className="Button2">Crear Orden de compra</button>
+            </div>
+            <br />
+            <div>
+            <button className="Button2" onClick={handleReset}>Vaciar Formulario</button>
+            </div>
+        </form>
+    );
+}
