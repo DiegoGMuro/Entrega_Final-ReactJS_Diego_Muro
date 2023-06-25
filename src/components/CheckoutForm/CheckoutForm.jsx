@@ -44,7 +44,7 @@ export default function CheckoutForm({ onConfirm }) {
         <form className="Container" onSubmit={onSubmit}>
             <h2>Ingresar datos para finalizar la compra ✈️</h2>
             <div style={styleInput}>
-                <label style={label}>Nombre</label>
+                <label style= {label}><span style={{ color: 'darkblue', fontWeight: 'bold' }}>Nombre</span></label>
                 <input
                     value={userData.nombre}
                     name="nombre"
@@ -52,7 +52,7 @@ export default function CheckoutForm({ onConfirm }) {
                     onChange={onInputChange} />
             </div>
             <div style={styleInput}>
-                <label style={label}>Teléfono</label>
+                <label style={label}><span style={{ color: 'darkblue', fontWeight: 'bold' }}>Teléfono</span></label>
                 <input
                     value={userData.phone}
                     name="phone"
@@ -61,7 +61,7 @@ export default function CheckoutForm({ onConfirm }) {
                 />
             </div>
             <div style={styleInput}>
-                <label style={label}>Email</label>
+                <label style={label}><span style={{ color: 'darkblue', fontWeight: 'bold' }}>Email</span></label>
                 <input
                     value={userData.email}
                     name="email"

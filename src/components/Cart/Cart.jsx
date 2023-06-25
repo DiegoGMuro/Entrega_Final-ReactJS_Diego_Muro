@@ -78,7 +78,7 @@ const Cart = () => {
                     ))
                 ) : (
                     <div>
-                        <h1>El carrito está vacío</h1>
+                        <h1 style={{ color: 'red', fontWeight: 'bold' }}>El carrito está vacío</h1>
                         <Link to='/' className="Option">Seguir comprando</Link>
                     </div>
                 )}

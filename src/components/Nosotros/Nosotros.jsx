@@ -22,7 +22,7 @@ export default function Nosotros() {
                 <iframe width="560" height="315" src="https://www.youtube.com/embed/BSVpBFlg1jg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
             <div className="texto-centrado">
-                <p>
+                <p style={{color: 'black'}}>
                     Nos complace presentarte nuestra agencia de viajes especializada en brindarte experiencias inolvidables en destinos fascinantes de Asia, Europa y América.
                     <br />
                     Nuestro objetivo principal es hacer realidad tus sueños de viaje, llevándote a lugares maravillosos y ayudándote a descubrir la belleza y la diversidad de ciudades y destinos increíbles en todo el mundo.

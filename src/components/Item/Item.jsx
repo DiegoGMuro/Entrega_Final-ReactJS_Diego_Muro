@@ -11,7 +11,7 @@ export default function Item({ id, nombre, pais, moneda, precioPasaje, imagen })
                 <h2 className="Nombre">
                     Ciudad: {nombre}
                 </h2>
-                <h4 className="Pais">
+                <h4 style={{color: 'blue', fontWeight: "bold"}} className="Pais">
                     Pais: {pais}
                 </h4>
                 <div className="item-card_img">

@@ -26,18 +26,18 @@ const CartItem = ({ id, nombre, pais, imagen, precioPasaje, quantity, moneda, id
 
   return (
     <div className="CartItem">
-      <h4>Destino: {nombre}</h4>
+      <h4 style={{ color: 'greenyellow', fontWeight: 'bold' }}>Destino: {nombre}</h4>
       <img src={imagen} className="Miniatura" alt="Miniatura" />
-      <p><span style={{ color: 'darkgreen', fontWeight: 'bold' }}>País:</span> {pais}</p>
+      <p><span style={{ color: 'yellow', fontWeight: 'bold' }}>País:</span > <span style={{ color: 'white', fontWeight: 'normal'}}>{pais}</span></p>
       <br />
-      <p><span style={{ color: 'darkgreen', fontWeight: 'bold' }}>Moneda:</span> {moneda}</p>
+      <p><span style={{ color: 'yellow', fontWeight: 'bold' }}>Moneda:</span> <span style={{ color: 'white', fontWeight: 'normal'}}>{moneda}</span></p>
       <br />
-      <p><span style={{ color: 'darkgreen', fontWeight: 'bold' }}>Idioma:</span> {idioma}</p>
+      <p><span style={{ color: 'yellow', fontWeight: 'bold' }}>Idioma:</span> <span style={{ color: 'white', fontWeight: 'normal'}}>{idioma}</span></p>
       <br />
-      <p><span style={{ color: 'darkgreen', fontWeight: 'bold' }}>Precio:</span> {formattedPrecioPasaje}</p>
+      <p><span style={{ color: 'yellow', fontWeight: 'bold' }}>Precio:</span> <span style={{ color: 'white', fontWeight: 'normal'}}>{formattedPrecioPasaje}</span></p>
       <br />
-      <p><span style={{ color: 'darkgreen', fontWeight: 'bold' }}>Cantidad:</span> {quantity}</p>
-      <p><span style={{ color: 'darkgreen', fontWeight: 'bold' }}>Subtotal:</span> {subtotal.toLocaleString('es-AR', { style: 'currency', currency: 'ARS', maximumFractionDigits: 0 })}</p>
+      <p><span style={{ color: 'yellow', fontWeight: 'bold' }}>Cantidad:</span><span style={{ color: 'white', fontWeight: 'normal'}}>{quantity}</span> </p>
+      <p><span style={{ color: 'yellow', fontWeight: 'bold' }}>Subtotal:</span> <span style={{ color: 'white', fontWeight: 'normal'}}>{subtotal.toLocaleString('es-AR', { style: 'currency', currency: 'ARS', maximumFractionDigits: 0 })}</span></p>
     </div>
   );
 }
